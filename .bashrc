@@ -1,3 +1,4 @@
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -35,11 +36,8 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
 
+TERM=xterm-256color
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -58,7 +56,7 @@ fi
 
 #if [ "$color_prompt" = yes ]; then
 if [ true ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\[\033[00m\]\[\033[00;35m\]\w\[\033[00m\] \[\033[01;36m\]>>> \[\033[00m\]'
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\[\033[00m\]\[\033[01;31m\]\w\[\033[00m\] \[\033[01;36m\]>>> \[\033[00m\]'
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -147,6 +145,12 @@ ex ()
   fi
 }
 
+# bash insulter
+#https://github.com/hkbakke/bash-insulter
+if [ -f /etc/bash.command-not-found ]; then
+    . /etc/bash.command-not-found
+fi
+
 # managing paths 
 
 cd `cat ~/.config/PWD/current`
@@ -186,7 +190,7 @@ alias cda="cd ~/.config/awesome/"
 alias icd="source cdir.sh"
 #grep
 alias grep='grep --colour=auto'
-alias rgrep='grep -r'
+alias rgrep='grep -r --colour=auto'
 #ls
 alias ls='exa -l --color=always --group-directories-first'
 alias ll='exa -laHhg --color=always --group-directories-first'
@@ -204,13 +208,7 @@ alias v='vim'
 alias nv='nvim'
 alias vim='nvim'
 alias notes="nvim notes.md"
-#backups
-alias goodnight='cowsay "running backup";sleep 1;bacc;cowsay "goodnight";sleep 5;shutdown now'
-#package managers
-alias pacs='sudo -S'
-alias yays='yay -S'
-alias apti='sudo apt install'
-#cp/mv/rm
+#files
 alias cp='cp -i'
 alias mv='mv -i'
 alias rmrf="rm -rf"
@@ -222,7 +220,6 @@ alias LL='sl'
 alias lll='sl'
 alias LA='sl'
 #git
-alias addall='git add -u'
 alias addall='git add .'
 alias branch='git branch'
 alias checkout='git checkout'
@@ -247,18 +244,19 @@ alias yta-opus="youtube-dl --extract-audio --audio-format opus "
 alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
 alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
+
+#tmux
+alias mtr='tmux new-session -s'
+alias tr='tmux rename-session'
+alias trw='tmux rename-window'
+
 #other
 alias asztal='cd ~/.config/asztal/; python3 asztal.py'
-#alias tr='tmux rename-window'
-
-##############################
-#loopback screen as webcam
-alias webcamloop='~/.config/v4l2loopback/run.sh'
 
 ##############################
 #quick webserver
 alias webUpd='sudo docker run -v $PWD:/usr/local/apache2/htdocs -p 80:80 -p 443:443 httpd'
-alias webUp='php -S localhost:1337'
+alias webUp='php -S 0.0.0.0:1337'
 
 #############################
 # pico ctf temp
@@ -276,10 +274,6 @@ alias span='trans :es'
 #parrot docker image
 alias labEnviroment='sudo docker run --rm -ti --network host -v $PWD:/work ctf_parrot'
 
-###########################
-# copy
-alias copy='xclip -selection clipboard'
-
 #############################
 #cyclic for developing exploits
 c64="aaaaaaaaBaaaaaaaCaaaaaaaDaaaaaaaEaaaaaaaFaaaaaaaGaaaaaaaHaaaaaaaIaaaaaaaJaaaaaaaKaaaaaaaLaaaaaaaMaaaaaaaNaaaaaaaOaaaaaaaPaaaaaaaQaaaaaaaRaaaaaaaSaaaaaaaTaaaaaaaUaaaaaaaVaaaaaaaWaaaaaaaXaaaaaaaYaaaaaaaZaaaaaaBBaaaaaaBCaaaaaaBDaaaaaaBEaaaaaaBFaaaaaaBGaaaaaaBHaaaaaaBIaaaaaaBJaaaaaaBKaaaaaaBLaaaaaaBMaaaaaaBNaaaaaaBOaaaaaaBPaaaaaaBQaaaaaaBRaaaaaaBSaaaaaaBTaaaaaaBUaaaaaaBVaaaaaaBWaaaaaaBXaaaaaaBYaaaaaaBZaaaaaaCBaaaaaaCCaaaaaaCDaaaaaaCEaaaaaaCFaaaaaaCGaaaaaaCHaaaaaaCIaaaaaaCJaaaaaaCKaaaaaaCLaaaaaaCMaaa"
@@ -289,6 +283,39 @@ c32="aaaaBaaaCaaaDaaaEaaaFaaaGaaaHaaaIaaaJaaaKaaaLaaaMaaaNaaaOaaaPaaaQaaaRaaaSaa
 #alacrity
 set ttymouse=sgr
 
+
+###############################
+# important
+alias important='vim /home/$USER/.IMPORTANT'
+
+###############################
+# the fuck
+eval "$(thefuck --alias)"
+
+#====================================== computer specific stuff =================================
+if [ `hostname -s` == "life" ]; then
+    # aliases
+    alias picom='compton'
+    alias termite='alacritty'
+    #gcc
+    alias gcc='gcc-10'
+    alias g++='g++-10'
+    #atp
+    alias atp='apt'
+    alias atp-get='apt-get'
+
+    ##############################
+    #make tmux work
+    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/hgsc/boost_libs/lib:/stornext/snfs1/next-gen/drio-scratch/tmux/local/lib
+fi
+if [ `hostname -s` == "laptop04" ]; then
+
+    ##############################
+    #loopback screen as webcam
+    alias webcamloop='~/.config/v4l2loopback/run.sh'
+fi
+#====================================== !computer specific stuff =================================
+
 ##############################
 ## paths
 #cargo
@@ -296,24 +323,18 @@ PATH=~/.cargo/bin:$PATH
 #idk i broke everything
 PATH=/home/antone/.local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:~/.bin:~/scripts:home/antone/.local/bin:~/.local/lib/python3.8/site-packages/:/snap/bin/:$PATH
 #java
-PATH=~/java/jdk-11.0.6+10/bin:$PATH:
+PATH=~/.java/jdk-11.0.9+11/bin:$PATH:
 #ruby
 PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
 
-##############################
-# shitty fix
-if [ `hostname -s` == "life" ]; then
-    alias picom='compton'
-    alias termite='alacritty'
-fi
 
-#functions that need tha aliases
+
+#functions
 c() { cd "$@" && ls; }
+mcd() { mkdir "$@" && cd "$@"; }
+
 #commands run on startup
 ls
 
-
-
-
-# starship stuff
+# starship terminal
 eval "$(starship init bash)"
