@@ -244,12 +244,12 @@ alias yta-opus="youtube-dl --extract-audio --audio-format opus "
 alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
 alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
-
 #tmux
 alias mtr='tmux new-session -s'
 alias rts='tmux rename-session'
 alias trw='tmux rename-window'
-
+#shutdown
+alias goodnight='cowsay "running backup";sleep 1;bacc;sleep 5;shutdown now'
 #other
 alias asztal='cd ~/.config/asztal/; python3 asztal.py'
 
@@ -288,9 +288,6 @@ set ttymouse=sgr
 # important
 alias important='vim /home/$USER/.IMPORTANT'
 
-###############################
-# the fuck
-eval "$(thefuck --alias)"
 
 #====================================== computer specific stuff =================================
 if [ `hostname -s` == "life" ]; then
@@ -329,12 +326,19 @@ PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
 
 
 
-#functions
+################################
+#cd functions
 c() { cd "$@" && ls; }
 mcd() { mkdir "$@" && cd "$@"; }
 
+###############################
+# the fuck
+eval "$(thefuck --alias)"
+
+###############################
 #commands run on startup
 ls
 
+###############################
 # starship terminal
 eval "$(starship init bash)"

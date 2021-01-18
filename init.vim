@@ -6,7 +6,6 @@ set relativenumber
 set shiftwidth=4
 set expandtab
 set nu
-set nowrap
 set smartcase
 set noswapfile
 set nobackup
@@ -18,10 +17,12 @@ set clipboard=unnamedplus
 set list
 set foldmethod=indent
 set foldlevelstart=99
-set listchars+=tab:┊\ 
 set showbreak=~
-set linebreak
 set mouse=nv
+
+"these 2 make big files lag
+"set nowrap
+"set linebreak
 
 
 
@@ -117,6 +118,7 @@ map <leader>, :bp<CR>
 map <leader>. :bn<CR>
 "toggles
 map <leader>tr :set wrap!<CR>
+map <leader>tnr :set linebreak!<CR>
 map <leader>tg :Goyo<CR>:set number<CR>
 "file managers
 map <leader>ff :CtrlP .<CR>
