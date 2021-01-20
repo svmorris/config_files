@@ -209,7 +209,7 @@ function! Toggle_transparent_background()
         let t:is_transparent = 0
     endif
 endfunction
-"Toggle_transparent_background()
+call Toggle_transparent_background()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""" coc config
