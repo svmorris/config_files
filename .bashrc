@@ -288,6 +288,8 @@ set ttymouse=sgr
 # important
 alias important='vim /home/$USER/.IMPORTANT'
 
+alias copy='xclip -selection clipboard'
+
 
 #====================================== computer specific stuff =================================
 if [ `hostname -s` == "life" ]; then

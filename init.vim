@@ -20,6 +20,9 @@ set foldlevelstart=99
 set showbreak=~
 set mouse=nv
 
+set background=dark
+set t_Co=256
+
 "these 2 make big files lag
 "set nowrap
 "set linebreak
@@ -356,3 +359,23 @@ function ShowDocsPrivate()
         execute ":help " . expand("<cword>")
     endif
 endfunction
+
+
+
+"""""""""""""""""""""""""""""""""""""""" find strings in files
+let t:findfiles_mode = 0
+function! Find_in_files()
+    if t:findfiles_mode == 1
+        let filename = split(expand ('<cWORD>'),":")[0]
+        execute ":e ".filename
+        let t:findfiles_mode = 0
+    else
+        let searchstring = input('string: ')
+        if searchstring != ""
+            execute "term". "!grep -ir --colour=auto '". searchstring ."' 2>/dev/null"
+            let t:findfiles_mode = 1
+        endif
+    endif
+
+endfunction
+map <leader>hh :call Find_in_files()<CR>
