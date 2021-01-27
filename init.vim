@@ -23,8 +23,7 @@ set mouse=nv
 set background=dark
 set t_Co=256
 
-"these 2 make big files lag
-"set nowrap
+"these 2 make big files lag set nowrap
 "set linebreak
 
 
@@ -367,12 +366,13 @@ let t:findfiles_mode = 0
 function! Find_in_files()
     if t:findfiles_mode == 1
         let filename = split(expand ('<cWORD>'),":")[0]
-        execute ":e ".filename
+        let linenum = split(expand ('<cWORD>'),":")[1]
+        execute ':e '.filename | execute "normal! ". linenum ."gg"
         let t:findfiles_mode = 0
     else
         let searchstring = input('string: ')
         if searchstring != ""
-            execute "term". "!grep -ir --colour=auto '". searchstring ."' 2>/dev/null"
+            execute "term". "!grep -inr --colour=auto '". searchstring ."' 2>/dev/null"
             let t:findfiles_mode = 1
         endif
     endif
