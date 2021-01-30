@@ -12,7 +12,7 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set inccommand=nosplit
+"set inccommand=nosplit
 set clipboard=unnamedplus
 set list
 set foldmethod=indent
@@ -24,6 +24,7 @@ set background=dark
 set t_Co=256
 
 "these 2 make big files lag set nowrap
+set nowrap
 "set linebreak
 
 
