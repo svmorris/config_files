@@ -40,7 +40,7 @@ call plug#begin('~/.local/share/nvim/site/autoload/')
 Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
 Plug 'https://github.com/kien/ctrlp.vim.git'
-"Plug 'https://github.com/ycm-core/YouCompleteMe.git'
+Plug 'https://github.com/ycm-core/YouCompleteMe.git'
 Plug 'mbbill/undotree'
 Plug 'junegunn/goyo.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -54,6 +54,9 @@ Plug 'kiteco/vim-plugin'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tomtom/tcomment_vim'
 Plug 'Yggdroot/indentLine'
+Plug 'ap/vim-templates'
+Plug 'TroyFletcher/vim-colors-synthwave'
+"Plug 'davidhalter/jedi-vim'
 "Plug 'lyuts/vim-rtags'
 call plug#end()
 
@@ -154,6 +157,7 @@ noremap <leader>vi> T>vt<
 nnoremap <leader>pp :call ConsoleLog() <CR>
 nnoremap <leader>dh :call ShowDocsPrivate() <CR>
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""" nerd tree configs
 " stuf for git
 let g:NERDTreeGitStatusWithFlags = 1
@@ -218,12 +222,13 @@ call Toggle_transparent_background()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""" coc config
 let g:coc_global_extensions = [
   \ 'coc-snippets',
+  \ 'coc-python',
+  \ 'coc-jedi',
   \ 'coc-pairs',
   \ 'coc-json', 
   \ 'coc-marketplace', 
   \ 'coc-docker', 
   \ 'coc-html', 
-  \ 'coc-template', 
   \ 'coc-tsserver', 
   \ ]
 " from readme
@@ -380,3 +385,33 @@ function! Find_in_files()
 
 endfunction
 map <leader>hh :call Find_in_files()<CR>
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""" templates apply to new files
+g:templates_empty_files = 1
+
+
+
+""""""""""""""""""""""""""""""""""""""""" pwnfile
+function! Pwn()
+    set ft=pwn
+    set ft=cpp
+    let filename = input('filename: ')
+    execute ":write " . filename . ".cpp"
+endfunction
+
+
+""""""""""""""""""""""""""""""""""""""""" switch between ycm and coc
+let g:ycm_filetype_whitelist = { 'rust': 1, 'vimscript': 1 }
+autocmd FileType rust :CocDisable
+
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""" jedi settings
+"let g:jedi#auto_initialization = 1
+"let g:jedi#auto_vim_configuration = 0
+"let g:jedi#rename_command = "<leader>r"
