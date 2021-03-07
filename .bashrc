@@ -133,6 +133,8 @@ alias rts='tmux rename-session'
 alias trw='tmux rename-window'
 #shutdown
 alias goodnight='cowsay "running backup";sleep 1;bacc;sleep 5;shutdown now'
+#objdump
+alias objdump='objdump -M intel'
 #other
 alias asztal='cd ~/.config/asztal/; python3 asztal.py'
 

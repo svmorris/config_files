@@ -56,6 +56,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-templates'
 Plug 'TroyFletcher/vim-colors-synthwave'
+Plug 'fxn/vim-monochrome'
 "Plug 'davidhalter/jedi-vim'
 "Plug 'lyuts/vim-rtags'
 call plug#end()
@@ -73,6 +74,11 @@ if exists('+termguicolors')
     let g:tokyonight_style = 'night' " available: night, storm
     let g:tokyonight_enable_italic = 0
     colorscheme tokyonight
+
+    " let g:monochrome_italic_comments = 1
+    " colorscheme monochrome
+    " colorscheme gruvbox
+    " set background=dark
 else
     colorscheme gruvbox
     set background=dark
