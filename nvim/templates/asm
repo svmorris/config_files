@@ -1,0 +1,8 @@
+section .data
+SECTION .bss
+SECTION .TEXT
+    GLOBAL _start 
+
+
+_start:
+

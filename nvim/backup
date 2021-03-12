@@ -1,0 +1,268 @@
+syntax on
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "sets
+set noerrorbells
+set tabstop=4 softtabstop=4
+set relativenumber
+set shiftwidth=4
+set expandtab
+set nu
+set nowrap
+set smartcase
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+set inccommand=nosplit
+set clipboard=unnamedplus
+set list
+set foldmethod=indent
+set foldlevelstart=99
+set listchars+=tab:┊\ 
+set showbreak=~
+set linebreak
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""not exactly sure
+highlight Normal guibg=NONE ctermbg=NONE
+highlight NonText guibg=NONE ctermbg=NONE
+highlight EndOfBuffer ctermfg=NONE ctermbg=NONE
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""plugins
+call plug#begin('~/.local/share/nvim/site/autoload/')
+Plug 'morhetz/gruvbox'
+Plug 'jremmen/vim-ripgrep'
+Plug 'https://github.com/kien/ctrlp.vim.git'
+"Plug 'https://github.com/ycm-core/YouCompleteMe.git'
+Plug 'mbbill/undotree'
+Plug 'junegunn/goyo.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
+Plug 'lilydjwg/colorizer'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'leafgarland/typescript-vim'
+"Plug 'lyuts/vim-rtags'
+call plug#end()
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""colourscheme
+colorscheme gruvbox
+set background=dark
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""special syntax
+autocmd FileType asm set syntax=nasm
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""maps
+"legend:
+    "d = delete/disable | e=enable | t=toggle | f=files | p=paste/insert | n=no | b=buffer
+:let mapleader = " "
+"basic
+map <Leader>q :q<CR>
+map <Leader>w :w<CR>
+"visual
+map <Leader>vl <S-v>
+map <Leader>vb <C-v>
+"splits
+map <Leader>sv :vsplit<CR><C-w><right>
+map <Leader>ss :split<CR><C-w><down>
+map <Leader>sV :vsplit<CR>
+map <Leader>sS :split<CR>
+"resize splits
+map <C-up> :res -5<CR>
+map <C-down> :res +5<CR>
+map <C-left> :vertical res -5<CR>
+map <C-right> :vertical res +5<CR>
+" moving between panes
+map <up> <C-w><up>
+map <down> <C-w><down>
+map <left> <C-w><left>
+map <right> <C-w><right>
+map <leader>k <C-w><up>
+map <leader>j <C-w><down>
+map <leader>h <C-w><left>
+map <leader>l <C-w><right>
+map <Leader>nh :noh<CR>
+"buffer
+map <leader>bd :bd<CR>
+map <leader>, :bp<CR>
+map <leader>. :bn<CR>
+"toggles
+map <leader>tr :set wrap!<CR>
+map <leader>tg :Goyo<CR>:set number<CR>
+"file managers
+map <leader>ff :CtrlP .<CR>
+map <Leader>fn :NERDTreeToggle<CR> 
+"coc-vim
+map <leader>dc :CocDisable<CR>
+map <leader>ec :CocEnable<CR>
+map <leader>pt :CocCommand template.template<CR>
+"sometimes keyboards are confusing
+map É :
+" folds
+map <leader>ya zM<CR>
+map <leader>yn zR<CR>
+map <leader>yl zl<CR>
+map <leader>yy zm<CR>
+map <leader><leader> zO<CR>
+
+" non leader based remaps
+noremap j gj
+noremap k gk
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" nerd tree configs
+" stuf for git
+let g:NERDTreeGitStatusWithFlags = 1
+"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:NERDTreeGitStatusNodeColorization = 1
+"let g:NERDTreeColorMapCustom = {
+    "\ "Staged"    : "#0ee375",  
+    "\ "Modified"  : "#d9bf91",  
+    "\ "Renamed"   : "#51C9FC",  
+    "\ "Untracked" : "#FCE77C",  
+    "\ "Unmerged"  : "#FC51E6",  
+    "\ "Dirty"     : "#FFBD61",  
+    "\ "Clean"     : "#87939A",   
+    "\ "Ignored"   : "#808080"   
+    "\ }                         
+"ignore some directories
+let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeIgnore = ['^__pycache__$']
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-json', 
+  \ 'coc-marketplace', 
+  \ 'coc-docker', 
+  \ 'coc-html', 
+  \ 'coc-template', 
+  \ 'coc-tsserver', 
+  \ ]
+" from readme
+" if hidden is not set, TextEdit might fail.
+set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+
+" Remap for rename current word
+nmap <F2> <Plug>(coc-rename)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-a> <Plug>(coc-range-select)
+xmap <silent> <C-a> <Plug>(coc-range-select)
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""bazsi smoothscrolling thing
+"function smoothscroll(up)
+"    if a:up
+"        let scrollaction=""
+"    else
+"        let scrollaction=""
+"    endif
+"    exec "normal " . scrollaction
+"    redraw
+"    let counter=1
+"    while counter<&scroll
+"        let counter+=1
+"        sleep 5m
+"        redraw
+"        exec "normal " . scrollaction
+"    endwhile
+"endfunction
+"
+"nnoremap <C-U> :call SmoothScroll(1)<Enter>
+"nnoremap <C-D> :call SmoothScroll(0)<Enter>
+"inoremap <C-U> <Esc>:call SmoothScroll(1)<Enter>i
+"inoremap <C-D> <Esc>:call SmoothScroll(0)<Enter>i
+"
+
+
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""" auto print
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup END
+
+"""""""""""""""""""""""""""""""""""""""""" auto print
+function ConsoleLog()
+    let value = expand('<cword>')
+    let ft = &filetype
+
+    if ft == 'python'
+        execute ":normal! o" . "print('" . value . ": '," . value . ")"
+    elseif ft == 'javascript'
+        execute ":normal! o" . "console.log('" . value . ": '," . value . ");"
+    endif
+endfunction
+nnoremap <space>pp :call ConsoleLog() <CR>
+
+

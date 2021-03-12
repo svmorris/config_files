@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/tmp'
+let g:netrw_dirhist_4='/home/antone/Music/sprinter/original/ctrl-s/with_map'
+let g:netrw_dirhist_3='/home/antone/Music/sprinter/original/ctrl-s'
+let g:netrw_dirhist_2='/home/antone/Music/sprinter/original/ctrl-s/with_map'
+let g:netrw_dirhist_1='/home/antone/Music/sprinter/original/ctrl-s'

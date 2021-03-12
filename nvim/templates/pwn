@@ -1,0 +1,42 @@
+#include <string>
+#include <iostream>
+
+#include <stdio.h>
+#include <errno.h>
+#include <stdlib.h>
+
+using namespace std;
+
+void exploit(string argument);
+
+int main(int argc, char** argv)
+{
+    if (argc > 1)
+    {
+        string argument = argv[1];
+        exploit(argument);
+    }
+    else
+    {
+        errno = ERANGE;
+        perror("A fella needs arguments to work\n");
+        exit(-1);
+    }
+    return 0;
+}
+
+
+
+void exploit(string argument)
+{
+    FILE *p;
+    p = popen(argument.c_str(), "we");
+
+    if ( p == NULL )
+    {
+        errno = ECHILD;
+        perror("failed to open specified file");
+        exit(-2);
+    }
+
+}
