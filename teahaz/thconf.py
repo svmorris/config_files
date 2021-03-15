@@ -26,6 +26,7 @@ def hook__message_get(messages,same_user):
     focused = get_if_focused()
 
     if not focused:
+        # print("running hook")
         sender = messages[-1].get('nickname')
         subprocess.Popen(f'notify-send "from {sender}" "New message!"',shell=True)
         playsound('/home/antone/.config/teahaz/bruh.mp3')
@@ -55,3 +56,12 @@ def hook__message_send(message):
 
     message = message.replace(":angry:-:angry:", ":angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry:")
     return message
+
+
+
+# while 1:
+#     import time
+#     time.sleep(1)
+#     print("sending")
+#     hook__message_get([{"nickname": "hec"},{"nickname": "hec"}], None)
+#     print(get_if_focused())

@@ -152,8 +152,9 @@ awful.layout.layouts = {
     --awful.layout.suit.corner.se,
     --lain.layout.cascade.tile,
     --lain.layout.cascade,
-    --lain.layout.centerwork,
-    lain.layout.centerwork.horizontal,
+    lain.layout.centerwork,
+    -- lain.layout.centerwork.horizontal,
+    -- lain.layout.centerwork.vertical,
     -- lain.layout.termfair,
     -- lain.layout.termfair.center,
 }
@@ -718,10 +719,10 @@ globalkeys = my_table.join(
     --awful.key({}, "XF86AudioStop", function() awful.util.spawn("playerctl stop", false) end),
 
 --Media keys supported by mpd.
-    awful.key({}, "XF86AudioPlay", function () awful.util.spawn("playerctl play-pause") end),
-    awful.key({}, "XF86AudioNext", function () awful.util.spawn("playerctl next") end),
-    awful.key({}, "XF86AudioPrev", function () awful.util.spawn("playerctl previous") end),
-    awful.key({}, "XF86AudioStop", function () awful.util.spawn("playerctl stop") end),
+    awful.key({}, "XF86AudioPlay", function () awful.util.spawn("pc -r play-pause") end),
+    awful.key({}, "XF86AudioNext", function () awful.util.spawn("pc -r next") end),
+    awful.key({}, "XF86AudioPrev", function () awful.util.spawn("pc -r previous") end),
+    awful.key({}, "XF86AudioStop", function () awful.util.spawn("pc -r stop") end),
 
     -- Copy primary to clipboard (terminals to gtk)
     awful.key({ modkey }, "c", function () awful.spawn.with_shell("xsel | xsel -i -b") end,
