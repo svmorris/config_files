@@ -348,8 +348,6 @@ globalkeys = my_table.join(
         {description = "rofi" , group = "function keys" }),
 
     -- super + ...
-    awful.key({ modkey }, "c", function () awful.util.spawn( "conky-toggle" ) end,
-        {description = "conky-toggle", group = "super"}),
     awful.key({ modkey }, "e", function () awful.util.spawn( editorgui ) end,
         {description = "run gui editor", group = "super"}),
     --awful.key({ modkey }, "h", function () awful.util.spawn( "kitty -T 'htop task manager' -e htop" ) end,
@@ -360,6 +358,8 @@ globalkeys = my_table.join(
         {description = "terminal", group = "super"}),
     awful.key({ modkey }, "v", function () awful.util.spawn( "pavucontrol" ) end,
         {description = "pulseaudio control", group = "super"}),
+    awful.key({ modkey }, "c", function () awful.util.spawn( "pc" ) end,
+        {description = "playerctl controller", group = "super"}),
     -- awful.key({ modkey }, "u", function () awful.screen.focused().mypromptbox:run() end,
       --    {description = "run prompt", group = "super"}),
     awful.key({ modkey }, "x",  function () awful.util.spawn( "oblogout" ) end,

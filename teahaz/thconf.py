@@ -46,7 +46,6 @@ def hook__message_send(message):
         message = re.sub("( i |^i | i$|^i$')", " I ", message, flags=re.IGNORECASE) 
         message = re.sub("( :jo |^:jo | :jo$|^:jo$)", " :joy: ", message, flags=re.IGNORECASE) 
 
-        message = message.replace(" i'", " I'")
 
 
         if mes == message:
@@ -54,7 +53,39 @@ def hook__message_send(message):
 
         mes = message
 
-    message = message.replace(":angry:-:angry:", ":angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry::angry:")
+
+    if message[:len('EMOJIFY')-1] == "EMOJIFY":
+        final_message = ""
+        for i, a in enumerate(message[len('EMOJIFY')-1:]):
+            if a == ' ': final_message +=  '  '
+            if a == 'a': final_message +=  ' :regional_indicator_a: '
+            if a == 'b': final_message += ' :regional_indicator_b: '
+            if a == 'c': final_message += ' :regional_indicator_c: '
+            if a == 'd': final_message += ' :regional_indicator_d: '
+            if a == 'e': final_message += ' :regional_indicator_e: '
+            if a == 'f': final_message += ' :regional_indicator_f: '
+            if a == 'g': final_message += ' :regional_indicator_g: '
+            if a == 'h': final_message += ' :regional_indicator_h: '
+            if a == 'i': final_message += ' :regional_indicator_i: '
+            if a == 'j': final_message += ' :regional_indicator_j: '
+            if a == 'k': final_message += ' :regional_indicator_k: '
+            if a == 'l': final_message += ' :regional_indicator_l: '
+            if a == 'm': final_message += ' :regional_indicator_m: '
+            if a == 'n': final_message += ' :regional_indicator_n: '
+            if a == 'o': final_message += ' :regional_indicator_o: '
+            if a == 'p': final_message += ' :regional_indicator_p: '
+            if a == 'q': final_message += ' :regional_indicator_q: '
+            if a == 'r': final_message += ' :regional_indicator_r: '
+            if a == 's': final_message += ' :regional_indicator_s: '
+            if a == 't': final_message += ' :regional_indicator_t: '
+            if a == 'u': final_message += ' :regional_indicator_u: '
+            if a == 'v': final_message += ' :regional_indicator_v: '
+            if a == 'w': final_message += ' :regional_indicator_w: '
+            if a == 'x': final_message += ' :regional_indicator_x: '
+            if a == 'y': final_message += ' :regional_indicator_y: '
+            if a == 'z': final_message += ' :regional_indicator_z: '
+
+        return final_message
     return message
 
 
