@@ -17,6 +17,13 @@ def get_if_focused():
         return False
 
 
+def sanitize(a):
+    b = []
+    for i in a: 
+        if re.match(r'[^a-zA-Z0-9]',i):
+            i = ''
+        b.append(i)
+    return ''.join(b)
 
 
 def hook__message_get(messages,same_user):
@@ -28,7 +35,8 @@ def hook__message_get(messages,same_user):
     if not focused:
         # print("running hook")
         sender = messages[-1].get('nickname')
-        subprocess.Popen(f'notify-send "from {sender}" "New message!"',shell=True)
+        # print(sanitize(sender))
+        subprocess.Popen(f'notify-send "from' +  sanitize(sender) +'" "New message!"',shell=True)
         playsound('/home/antone/.config/teahaz/bruh.mp3')
 
     return focused
@@ -58,7 +66,7 @@ def hook__message_send(message):
         final_message = ""
         for i, a in enumerate(message[len('EMOJIFY')-1:]):
             if a == ' ': final_message +=  '  '
-            if a == 'a': final_message +=  ' :regional_indicator_a: '
+            if a == 'a': final_message += ' :regional_indicator_a: '
             if a == 'b': final_message += ' :regional_indicator_b: '
             if a == 'c': final_message += ' :regional_indicator_c: '
             if a == 'd': final_message += ' :regional_indicator_d: '
