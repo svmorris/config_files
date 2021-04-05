@@ -57,6 +57,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-templates'
 Plug 'TroyFletcher/vim-colors-synthwave'
 Plug 'fxn/vim-monochrome'
+Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 "Plug 'davidhalter/jedi-vim'
 "Plug 'lyuts/vim-rtags'
 call plug#end()
