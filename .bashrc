@@ -123,7 +123,7 @@ alias gitlog="git log --all --graph --decorate"
 alias mc='mc -b'
 #terminal
 alias bye='exit'
-alias sps1="export PS1=' \[\033[01;36m\]>>> \[\033[00m\]'" # shortens the ps1 incase there isnt much space
+alias sps1="export PS1=' \[\033[01;36m\]>>> \kdeconnect-cli -d bce44a5c5101c27b -k j[\033[00m\]'" # shortens the ps1 incase there isnt much space
 # youtube-dl
 alias yta-aac="youtube-dl --extract-audio --audio-format aac "
 alias yta-best="youtube-dl --extract-audio --audio-format best "
@@ -166,6 +166,21 @@ alias labEnviroment='sudo docker run --rm -ti --network host -v $PWD:/work ctf_p
 ############################
 #kdeconnect to my phone
 alias phone="kdeconnect-cli -l --id-only | xargs -I{} sh -c 'kdeconnect-cli --pair -d {}'"
+# alias tp="kdeconnect-cli -a --id-only | xargs -I{} sh -c 'kdeconnect-cli -d {} -k $@'"
+function tp {
+    ID=$(kdeconnect-cli -a --id-only)
+    echo $ID
+    while [ 1 ]
+    do
+        read -n1 char
+        if [ "$char" != "" ]
+        then
+            kdeconnect-cli -d $ID -k $char
+        else
+            kdeconnect-cli -d $ID -k ' '
+        fi
+    done
+}
 
 #############################
 #cyclic for developing exploits
