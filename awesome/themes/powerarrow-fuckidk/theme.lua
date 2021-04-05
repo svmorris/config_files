@@ -289,6 +289,8 @@ theme.volume = lain.widget.alsa({
     settings = function()
         if volume_now.status == "off" then
             volicon:set_image(theme.widget_vol_mute)
+        elseif volume_now.level == nil then
+            volicon:set_image(theme.widget_vol_no)
         elseif tonumber(volume_now.level) == 0 then
             volicon:set_image(theme.widget_vol_no)
         elseif tonumber(volume_now.level) <= 50 then
@@ -297,7 +299,9 @@ theme.volume = lain.widget.alsa({
             volicon:set_image(theme.widget_vol)
         end
 
-        widget:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
+        if volume_now.level ~= nil then
+            widget:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
+        end
     end
 })
 

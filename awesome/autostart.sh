@@ -44,8 +44,10 @@ run "nitrogen --restore"
 run "xfce4-power-manager"
 
 #
-#run "discord"
-#run "signal-desktop"
+# autostart gui apps
+run "discord"
+run "geary"
+run "signal-desktop"
 
 
 #run "conky -c $HOME/.config/awesome/system-overview"
