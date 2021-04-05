@@ -1,4 +1,3 @@
-
 #!/bin/bash
 function run {
   if ! pgrep $1 ;
@@ -48,6 +47,7 @@ run "xfce4-power-manager"
 run "discord"
 run "geary"
 run "signal-desktop"
+run "kdeconnect-cli -l --id-only | xargs -I{} sh -c 'kdeconnect-cli --pair -d {}'"
 
 
 #run "conky -c $HOME/.config/awesome/system-overview"

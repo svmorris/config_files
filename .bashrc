@@ -1,5 +1,13 @@
 export EDITOR=nvim
 
+# run function from autostart
+function run {
+  if ! pgrep $1 ;
+  then
+    $@&
+  fi
+}
+
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
 ex ()
@@ -155,6 +163,10 @@ alias span='trans :es'
 #parrot docker image
 alias labEnviroment='sudo docker run --rm -ti --network host -v $PWD:/work ctf_parrot'
 
+############################
+#kdeconnect to my phone
+alias phone="kdeconnect-cli -l --id-only | xargs -I{} sh -c 'kdeconnect-cli --pair -d {}'"
+
 #############################
 #cyclic for developing exploits
 c64="aaaaaaaaBaaaaaaaCaaaaaaaDaaaaaaaEaaaaaaaFaaaaaaaGaaaaaaaHaaaaaaaIaaaaaaaJaaaaaaaKaaaaaaaLaaaaaaaMaaaaaaaNaaaaaaaOaaaaaaaPaaaaaaaQaaaaaaaRaaaaaaaSaaaaaaaTaaaaaaaUaaaaaaaVaaaaaaaWaaaaaaaXaaaaaaaYaaaaaaaZaaaaaaBBaaaaaaBCaaaaaaBDaaaaaaBEaaaaaaBFaaaaaaBGaaaaaaBHaaaaaaBIaaaaaaBJaaaaaaBKaaaaaaBLaaaaaaBMaaaaaaBNaaaaaaBOaaaaaaBPaaaaaaBQaaaaaaBRaaaaaaBSaaaaaaBTaaaaaaBUaaaaaaBVaaaaaaBWaaaaaaBXaaaaaaBYaaaaaaBZaaaaaaCBaaaaaaCCaaaaaaCDaaaaaaCEaaaaaaCFaaaaaaCGaaaaaaCHaaaaaaCIaaaaaaCJaaaaaaCKaaaaaaCLaaaaaaCMaaa"
@@ -173,7 +185,7 @@ alias copy='xclip -selection clipboard'
 
 
 #====================================== computer specific stuff =================================
-if [ `hostname -s` == "life" ]; then
+if [ `cat /etc/hostname` == "life" ]; then
     # aliases
     alias picom='compton'
     alias termite='alacritty'
@@ -188,7 +200,7 @@ if [ `hostname -s` == "life" ]; then
     #make tmux work
     LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/hgsc/boost_libs/lib:/stornext/snfs1/next-gen/drio-scratch/tmux/local/lib
 fi
-if [ `hostname -s` == "laptop04" ]; then
+if [ `cat /etc/hostname` == "laptop04" ]; then
 
     ##############################
     #loopback screen as webcam
