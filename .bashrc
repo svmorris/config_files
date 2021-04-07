@@ -2,6 +2,7 @@ export EDITOR=nvim
 
 # run function from autostart
 function run {
+  echo "this thign"
   if ! pgrep $1 ;
   then
     $@&
@@ -165,8 +166,7 @@ alias labEnviroment='sudo docker run --rm -ti --network host -v $PWD:/work ctf_p
 
 ############################
 #kdeconnect to my phone
-alias phone="kdeconnect-cli -l --id-only | xargs -I{} sh -c 'kdeconnect-cli --pair -d {}'"
-# alias tp="kdeconnect-cli -a --id-only | xargs -I{} sh -c 'kdeconnect-cli -d {} -k $@'"
+alias fphone="kdeconnect-cli -l --id-only | xargs -I{} sh -c 'kdeconnect-cli --pair -d {}'"
 function tp {
     ID=$(kdeconnect-cli -a --id-only)
     echo $ID

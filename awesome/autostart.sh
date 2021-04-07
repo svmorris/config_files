@@ -48,7 +48,6 @@ run "discord"
 run "geary"
 run "signal-desktop"
 run "phone"
-run "while [ 1 ];do phone; sleep 60;done"
 
 
 #run "conky -c $HOME/.config/awesome/system-overview"
