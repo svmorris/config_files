@@ -146,6 +146,8 @@ alias goodnight='cowsay "running backup";sleep 1;bacc;sleep 5;shutdown now'
 alias objdump='objdump -M intel'
 #other
 alias asztal='cd ~/.config/asztal/; python3 asztal.py'
+alias pulserestart='pulseaudio --kill && pulseaudio --start'
+
 
 ##############################
 #quick webserver
