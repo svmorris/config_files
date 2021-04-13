@@ -5,7 +5,7 @@ function run {
   echo "this thign"
   if ! pgrep $1 ;
   then
-    $@&
+    $@ > /dev/null 2> /dev/null &
   fi
 }
 
