@@ -2,7 +2,6 @@ export EDITOR=nvim
 
 # run function from autostart
 function run {
-  echo "this thign"
   if ! pgrep $1 ;
   then
     $@ > /dev/null 2> /dev/null &
@@ -44,7 +43,7 @@ ex ()
 #
 # managing paths 
 
-cd `cat ~/.config/PWD/current`
+cd "`cat ~/.config/PWD/current`"
 
 alias t='echo $PWD > ~/.config/PWD/current'
 alias t1='echo $PWD > ~/.config/PWD/c1'
@@ -57,7 +56,7 @@ alias t7='echo $PWD > ~/.config/PWD/c7'
 alias t8='echo $PWD > ~/.config/PWD/c8'
 alias t9='echo $PWD > ~/.config/PWD/c9'
 
-alias cd0='cd `cat ~/.config/PWD/current`'
+alias cd0='cd `cat "~/.config/PWD/current"'
 alias cd1='cd `cat ~/.config/PWD/c1`'
 alias cd2='cd `cat ~/.config/PWD/c2`'
 alias cd3='cd `cat ~/.config/PWD/c3`'

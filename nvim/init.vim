@@ -74,8 +74,7 @@ if exists('+termguicolors')
 
     let g:tokyonight_style = 'night' " available: night, storm
     let g:tokyonight_enable_italic = 0
-    colorscheme tokyonight
-
+    colorscheme tokyonight 
     " let g:monochrome_italic_comments = 1
     " colorscheme monochrome
     " colorscheme gruvbox
@@ -422,3 +421,26 @@ autocmd FileType rust :CocDisable
 "let g:jedi#auto_initialization = 1
 "let g:jedi#auto_vim_configuration = 0
 "let g:jedi#rename_command = "<leader>r"
+"
+
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""" html specific maps
+" if &filetype == "html"
+nmap <leader>hti :CocDisable<CR>I<i><Esc>A</i><Esc>:CocEnable<CR>
+nmap <leader>htu :CocDisable<CR>I<u><Esc>A</u><Esc>:CocEnable<CR>
+nmap <leader>htb :CocDisable<CR>I<b><Esc>A</b><Esc>:CocEnable<CR>
+
+nmap <leader>ht6 :CocDisable<CR>I<h6><Esc>A</h6><Esc>:CocEnable<CR>
+nmap <leader>ht5 :CocDisable<CR>I<h5><Esc>A</h5><Esc>:CocEnable<CR>
+nmap <leader>ht4 :CocDisable<CR>I<h4><Esc>A</h4><Esc>:CocEnable<CR>
+nmap <leader>ht3 :CocDisable<CR>I<h3><Esc>A</h2><Esc>:CocEnable<CR>
+nmap <leader>ht2 :CocDisable<CR>I<h2><Esc>A</h2><Esc>:CocEnable<CR>
+nmap <leader>ht1 :CocDisable<CR>I<h1><Esc>A</h1><Esc>:CocEnable<CR>
+
+nmap <leader>htp :CocDisable<CR>I<p><Esc>A</p><Esc>:CocEnable<CR>
+nmap <leader>htl :CocDisable<CR>I<li><Esc>A</li><Esc>:CocEnable<CR>
+nmap <leader>hta :CocDisable<CR>I<a href=""><Esc>A</a><Esc>:CocEnable<CR>
+" endif

@@ -29,13 +29,13 @@ run "com.github.davidmhewitt.clipped"
 
 # screens sometimes doesnt run when it does not find one of the monitors
 # it is very important that screens runs before variety so this will slowly spam screens until it works
-sleep 5;
-screens
-while [ $? != 0 ];do
-    sleep 5
-    notify-send "screens didnt run"
-    screens
-done
+ sleep 5;
+ screens
+ while [ $? != 0 ];do
+     sleep 5
+     notify-send "screens didnt run"
+     screens
+ done
 
 run "nitrogen --restore"
 

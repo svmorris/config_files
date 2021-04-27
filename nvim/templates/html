@@ -5,5 +5,8 @@
     </head>
     <body>
 
+        <script>
+            alert(Error);
+        </script>
     </body>
 </html>
