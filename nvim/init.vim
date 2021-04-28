@@ -34,7 +34,6 @@ set nowrap
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""plugins
-"add this
 "https://github.com/tpope/vim-surround
 call plug#begin('~/.local/share/nvim/site/autoload/')
 Plug 'morhetz/gruvbox'
@@ -58,8 +57,13 @@ Plug 'ap/vim-templates'
 Plug 'TroyFletcher/vim-colors-synthwave'
 Plug 'fxn/vim-monochrome'
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
-"Plug 'davidhalter/jedi-vim'
-"Plug 'lyuts/vim-rtags'
+
+" telescope vim
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
 call plug#end()
 
 
@@ -146,6 +150,7 @@ map <leader>ya zM<CR>
 map <leader>yn zR<CR>
 map <leader>yl zl<CR>
 map <leader>yy zm<CR>
+map <leader>ys zo<CR>
 map <leader><leader> zO<CR>
 "show docs
 nnoremap <leader>dd :call <SID>show_documentation()<CR>
@@ -162,6 +167,13 @@ noremap <leader>vi> T>vt<
 " own functrions calls
 nnoremap <leader>pp :call ConsoleLog() <CR>
 nnoremap <leader>dh :call ShowDocsPrivate() <CR>
+
+" telescope vim
+nnoremap <leader><leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>tff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>tfg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>tfb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>tfh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""" nerd tree configs
