@@ -32,7 +32,6 @@ set nowrap
 
 
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""plugins
 "https://github.com/tpope/vim-surround
 call plug#begin('~/.local/share/nvim/site/autoload/')
@@ -47,7 +46,7 @@ Plug 'preservim/nerdtree'
 Plug 'machakann/vim-highlightedyank'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'leafgarland/typescript-vim'
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'tHoMaStHeThErMoNuClEaRbOmB/tokyonight-vim'
 Plug 'lilydjwg/colorizer'
 Plug 'kiteco/vim-plugin'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -78,7 +77,7 @@ if exists('+termguicolors')
 
     let g:tokyonight_style = 'night' " available: night, storm
     let g:tokyonight_enable_italic = 0
-    colorscheme tokyonight 
+    colorscheme tokyonight
     " let g:monochrome_italic_comments = 1
     " colorscheme monochrome
     " colorscheme gruvbox
@@ -422,8 +421,9 @@ endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""" switch between ycm and coc
-let g:ycm_filetype_whitelist = { 'rust': 1, 'vimscript': 1 }
+let g:ycm_filetype_whitelist = { 'rust': 1, 'vimscript': 1, 'cpp': 1}
 autocmd FileType rust :CocDisable
+autocmd FileType cpp :CocDisable
 
 
 
@@ -441,18 +441,19 @@ autocmd FileType rust :CocDisable
 
 """""""""""""""""""""""""""""""""""""""""" html specific maps
 " if &filetype == "html"
-nmap <leader>hti :CocDisable<CR>I<i><Esc>A</i><Esc>:CocEnable<CR>
-nmap <leader>htu :CocDisable<CR>I<u><Esc>A</u><Esc>:CocEnable<CR>
-nmap <leader>htb :CocDisable<CR>I<b><Esc>A</b><Esc>:CocEnable<CR>
+nmap <leader>hti :CocDisable<CR>Bi<i><Esc>Ea</i><Esc>:CocEnable<CR>
+nmap <leader>htu :CocDisable<CR>Bi<u><Esc>Ea</u><Esc>:CocEnable<CR>
+nmap <leader>htb :CocDisable<CR>Bi<b><Esc>Ea</b><Esc>:CocEnable<CR>
 
-nmap <leader>ht6 :CocDisable<CR>I<h6><Esc>A</h6><Esc>:CocEnable<CR>
-nmap <leader>ht5 :CocDisable<CR>I<h5><Esc>A</h5><Esc>:CocEnable<CR>
-nmap <leader>ht4 :CocDisable<CR>I<h4><Esc>A</h4><Esc>:CocEnable<CR>
-nmap <leader>ht3 :CocDisable<CR>I<h3><Esc>A</h2><Esc>:CocEnable<CR>
-nmap <leader>ht2 :CocDisable<CR>I<h2><Esc>A</h2><Esc>:CocEnable<CR>
-nmap <leader>ht1 :CocDisable<CR>I<h1><Esc>A</h1><Esc>:CocEnable<CR>
+nmap <leader>ht6 :CocDisable<CR>I<h6><Esc>A</h6><Esc>^:CocEnable<CR>
+nmap <leader>ht5 :CocDisable<CR>I<h5><Esc>A</h5><Esc>^:CocEnable<CR>
+nmap <leader>ht4 :CocDisable<CR>I<h4><Esc>A</h4><Esc>^:CocEnable<CR>
+nmap <leader>ht3 :CocDisable<CR>I<h3><Esc>A</h2><Esc>^:CocEnable<CR>
+nmap <leader>ht2 :CocDisable<CR>I<h2><Esc>A</h2><Esc>^:CocEnable<CR>
+nmap <leader>ht1 :CocDisable<CR>I<h1><Esc>A</h1><Esc>^:CocEnable<CR>
 
-nmap <leader>htp :CocDisable<CR>I<p><Esc>A</p><Esc>:CocEnable<CR>
-nmap <leader>htl :CocDisable<CR>I<li><Esc>A</li><Esc>:CocEnable<CR>
-nmap <leader>hta :CocDisable<CR>I<a href=""><Esc>A</a><Esc>:CocEnable<CR>
+nmap <leader>htp :CocDisable<CR>I<p><Esc>A</p><Esc>^:CocEnable<CR>
+nmap <leader>htd :CocDisable<CR>I<d><Esc>A</d><Esc>^:CocEnable<CR>
+nmap <leader>htl :CocDisable<CR>I<li><Esc>A</li><Esc>^:CocEnable<CR>
+nmap <leader>hta :CocDisable<CR>I<a href=""><Esc>A</a><Esc>^:CocEnable<CR>
 " endif

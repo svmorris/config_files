@@ -45,9 +45,9 @@ run "xfce4-power-manager"
 #
 # autostart gui apps
 run "discord"
-run "geary"
 run "signal-desktop"
 run "phone"
+# run "geary"
 
 
 #run "conky -c $HOME/.config/awesome/system-overview"
