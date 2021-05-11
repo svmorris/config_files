@@ -229,7 +229,7 @@ fi
 #cargo
 PATH=~/.cargo/bin:$PATH
 #idk i broke everything
-PATH=/home/antone/.local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:~/.bin:~/scripts:home/antone/.local/bin:~/.local/lib/python3.8/site-packages/:/snap/bin/:$PATH
+PATH=/home/antone/.local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:~/.bin:~/scripts:home/antone/.local/bin:~/.local/lib/python3.8/site-packages/:/snap/bin/:/var/lib/snapd/snap/bin:$PATH
 #java
 PATH=~/.java/jdk-11.0.9+11/bin:$PATH:
 #ruby
