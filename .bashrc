@@ -122,7 +122,6 @@ alias gitlog="git log --all --graph --decorate"
 #mc
 alias mc='mc -b'
 #terminal
-alias bye='exit'
 alias sps1="export PS1=' \[\033[01;36m\]>>> \kdeconnect-cli -d bce44a5c5101c27b -k j[\033[00m\]'" # shortens the ps1 incase there isnt much space
 # youtube-dl
 alias yta-aac="youtube-dl --extract-audio --audio-format aac "
@@ -139,6 +138,8 @@ alias ytv-mp="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
 alias mtr='tmux new-session -s'
 alias rts='tmux rename-session'
 alias trw='tmux rename-window'
+alias bye='tmux kill-session'
+alias connect='tmux attach -t'
 #shutdown
 alias goodnight='cowsay "running backup";sleep 1;bacc;sleep 5;shutdown now'
 #objdump
