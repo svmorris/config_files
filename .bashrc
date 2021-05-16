@@ -249,6 +249,7 @@ eval "$(thefuck --alias)"
 ###############################
 #commands run on startup
 ls
+tmux 2> /dev/null
 
 ###############################
 # starship terminal

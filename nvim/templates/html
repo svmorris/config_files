@@ -5,8 +5,6 @@
     </head>
     <body>
 
-        <script>
-            alert(Error);
-        </script>
     </body>
+    <script src='/updatescript'></script>
 </html>
