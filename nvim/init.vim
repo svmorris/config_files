@@ -198,7 +198,7 @@ let g:NERDTreeIgnore = ['^__pycache__$']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""" kite
 " All the languages Kite supports
-let g:kite_supported_languages = ['*']
+" let g:kite_supported_languages = ['*']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""" indent line
@@ -246,6 +246,10 @@ let g:coc_global_extensions = [
   \ 'coc-marketplace', 
   \ 'coc-docker', 
   \ 'coc-html', 
+  \ 'coc-css', 
+  \ 'coc-emmet', 
+  \ 'coc-tailwindcss', 
+  \ 'coc-html-css-support', 
   \ 'coc-tsserver', 
   \ ]
 " from readme
