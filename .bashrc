@@ -184,6 +184,27 @@ function tp {
     done
 }
 
+
+### tmux
+function tm {
+    if [ "$1" == "" ]
+    then
+        tmux
+    fi
+    tmux attach -t $1
+    if [ "$?" != "0" ]
+    then
+        tmux new-session -s $1
+    fi
+}
+
+
+function runtmux {
+
+    echo ''
+
+}
+
 #############################
 #cyclic for developing exploits
 c64="aaaaaaaaBaaaaaaaCaaaaaaaDaaaaaaaEaaaaaaaFaaaaaaaGaaaaaaaHaaaaaaaIaaaaaaaJaaaaaaaKaaaaaaaLaaaaaaaMaaaaaaaNaaaaaaaOaaaaaaaPaaaaaaaQaaaaaaaRaaaaaaaSaaaaaaaTaaaaaaaUaaaaaaaVaaaaaaaWaaaaaaaXaaaaaaaYaaaaaaaZaaaaaaBBaaaaaaBCaaaaaaBDaaaaaaBEaaaaaaBFaaaaaaBGaaaaaaBHaaaaaaBIaaaaaaBJaaaaaaBKaaaaaaBLaaaaaaBMaaaaaaBNaaaaaaBOaaaaaaBPaaaaaaBQaaaaaaBRaaaaaaBSaaaaaaBTaaaaaaBUaaaaaaBVaaaaaaBWaaaaaaBXaaaaaaBYaaaaaaBZaaaaaaCBaaaaaaCCaaaaaaCDaaaaaaCEaaaaaaCFaaaaaaCGaaaaaaCHaaaaaaCIaaaaaaCJaaaaaaCKaaaaaaCLaaaaaaCMaaa"
@@ -250,8 +271,12 @@ eval "$(thefuck --alias)"
 ###############################
 #commands run on startup
 ls
-tmux 2> /dev/null
+# tmux 2> /dev/null
 
 ###############################
 # starship terminal
 eval "$(starship init bash)"
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[ -f /home/antone/Music/teahouse-electron.git/main/node_modules/tabtab/.completions/electron-forge.bash ] && . /home/antone/Music/teahouse-electron.git/main/node_modules/tabtab/.completions/electron-forge.bash
