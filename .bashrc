@@ -245,12 +245,18 @@ mcd() { mkdir "$@" && cd "$@"; }
 
 ###############################
 # the fuck
-eval "$(thefuck --alias)"
+# eval "$(thefuck --alias)"
 
 ###############################
 #commands run on startup
-ls
-tmux 2> /dev/null
+env | grep TMUX > /dev/null
+if [ "$?" != "0" ]
+then
+    tmux
+else
+    ls
+fi
+
 
 ###############################
 # starship terminal
