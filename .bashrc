@@ -270,7 +270,6 @@ mcd() { mkdir "$@" && cd "$@"; }
 
 ###############################
 #commands run on startup
-ls
 # tmux 2> /dev/null
 env | grep TMUX > /dev/null
 if [ "$?" != "0" ]
