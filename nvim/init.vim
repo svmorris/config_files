@@ -36,7 +36,7 @@ set nowrap
 "https://github.com/tpope/vim-surround
 call plug#begin('~/.local/share/nvim/site/autoload/')
 Plug 'morhetz/gruvbox'
-Plug 'jremmen/vim-ripgrep'
+" Plug 'jremmen/vim-ripgrep'
 Plug 'https://github.com/kien/ctrlp.vim.git'
 Plug 'https://github.com/ycm-core/YouCompleteMe.git'
 Plug 'mbbill/undotree'
@@ -173,29 +173,6 @@ nnoremap <leader>tff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>tfg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>tfb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>tfh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-"make copy more sane
-nnoremap Y y$
-
-" keep cursor sentered
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap J mzJ`z
-
-" Add undo breakpoints so undo after
-" insert mode doesnt get rid of everyting.
-inoremap , ,<c-g>u
-inoremap . .<c-g>u
-inoremap ! !<c-g>u
-inoremap ? ?<c-g>u
-
-" Moving chuncks of code
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
-inoremap <C-j> <esc>:m .+1<CR>==i
-inoremap <C-k> <esc>:m .-2<CR>==i
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""" nerd tree configs

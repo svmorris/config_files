@@ -64,12 +64,13 @@ conky.config = {
 }
 
 conky.text = [[
-${color}${goto 13}CPU 1 ${goto 81}${color }${cpu cpu2}% ${goto 131}${color3}${cpubar cpu2 18}
-${color}${goto 13}CPU 2 ${goto 81}${color }${cpu cpu3}% ${goto 131}${color3}${cpubar cpu3 18}
-${color}${goto 13}CPU 3 ${goto 81}${color }${cpu cpu4}% ${goto 131}${color3}${cpubar cpu4 18}
-${color}${goto 13}CPU 4 ${goto 81}${color }${cpu cpu5}% ${goto 131}${color3}${cpubar cpu5 18}
-${color}${goto 13}CPU 5 ${goto 81}${color }${cpu cpu6}% ${goto 131}${color3}${cpubar cpu6 18}
-${color}${goto 13}CPU 6 ${goto 81}${color }${cpu cpu7}% ${goto 131}${color3}${cpubar cpu7 18}
-${color}${goto 13}CPU 7 ${goto 81}${color }${cpu cpu8}% ${goto 131}${color3}${cpubar cpu8 18}
+${color}${goto 13}CPU 1 ${goto 81}${color }${cpu cpu1}% ${goto 131}${color3}${cpubar cpu1 18}
+${color}${goto 13}CPU 2 ${goto 81}${color }${cpu cpu2}% ${goto 131}${color3}${cpubar cpu2 18}
+${color}${goto 13}CPU 3 ${goto 81}${color }${cpu cpu3}% ${goto 131}${color3}${cpubar cpu3 18}
+${color}${goto 13}CPU 4 ${goto 81}${color }${cpu cpu4}% ${goto 131}${color3}${cpubar cpu4 18}
+${color}${goto 13}CPU 5 ${goto 81}${color }${cpu cpu5}% ${goto 131}${color3}${cpubar cpu5 18}
+${color}${goto 13}CPU 6 ${goto 81}${color }${cpu cpu6}% ${goto 131}${color3}${cpubar cpu6 18}
+${color}${goto 13}CPU 7 ${goto 81}${color }${cpu cpu8}% ${goto 131}${color3}${cpubar cpu7 18}
+${color}${goto 13}CPU 8 ${goto 81}${color }${cpu cpu8}% ${goto 131}${color3}${cpubar cpu8 18}
 ${color}RAM Usage:$color $mem/$memmax - $memperc%
 ]]
