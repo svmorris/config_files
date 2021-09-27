@@ -163,6 +163,8 @@ noremap k gk
 "html stuff
 noremap <leader>vi< T>vt<
 noremap <leader>vi> T>vt<
+" undotree (if I ever use it)
+nnoremap <leader>u :UndotreeToggle<CR>
 " own functrions calls
 nnoremap <leader>pp :call ConsoleLog() <CR>
 nnoremap <leader>dh :call ShowDocsPrivate() <CR>

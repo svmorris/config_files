@@ -43,8 +43,8 @@ conky.config = {
     draw_shades = false,
     use_xft = true,
     font = 'DejaVu Sans Mono:size=12',
-    gap_x = 250,
-    gap_y = 250,
+    gap_x = 300,
+    gap_y = 150,
     minimum_height = 5,
 	minimum_width = 5,
     net_avg_samples = 2,
@@ -64,13 +64,14 @@ conky.config = {
 }
 
 conky.text = [[
-${color}${goto 13}CPU 1 ${goto 81}${color }${cpu cpu1}% ${goto 131}${color3}${cpubar cpu1 18}
-${color}${goto 13}CPU 2 ${goto 81}${color }${cpu cpu2}% ${goto 131}${color3}${cpubar cpu2 18}
-${color}${goto 13}CPU 3 ${goto 81}${color }${cpu cpu3}% ${goto 131}${color3}${cpubar cpu3 18}
-${color}${goto 13}CPU 4 ${goto 81}${color }${cpu cpu4}% ${goto 131}${color3}${cpubar cpu4 18}
-${color}${goto 13}CPU 5 ${goto 81}${color }${cpu cpu5}% ${goto 131}${color3}${cpubar cpu5 18}
-${color}${goto 13}CPU 6 ${goto 81}${color }${cpu cpu6}% ${goto 131}${color3}${cpubar cpu6 18}
-${color}${goto 13}CPU 7 ${goto 81}${color }${cpu cpu8}% ${goto 131}${color3}${cpubar cpu7 18}
-${color}${goto 13}CPU 8 ${goto 81}${color }${cpu cpu8}% ${goto 131}${color3}${cpubar cpu8 18}
+${color} ${goto 23} ${exec sensors | grep 'Core 0' | awk '{print $3}' | cut -c2-3}c ${cpu cpu0}% ${goto 81} ${color} ${goto 131}${color3}${cpubar cpu0 18}
+${color} ${goto 23} ${exec sensors | grep 'Core 0' | awk '{print $3}' | cut -c2-3}c ${cpu cpu1}% ${goto 81} ${color} ${goto 131}${color3}${cpubar cpu1 18}
+${color} ${goto 23} ${exec sensors | grep 'Core 1' | awk '{print $3}' | cut -c2-3}c ${cpu cpu2}% ${goto 81} ${color} ${goto 131}${color3}${cpubar cpu2 18}
+${color} ${goto 23} ${exec sensors | grep 'Core 1' | awk '{print $3}' | cut -c2-3}c ${cpu cpu3}% ${goto 81} ${color} ${goto 131}${color3}${cpubar cpu3 18}
+${color} ${goto 23} ${exec sensors | grep 'Core 2' | awk '{print $3}' | cut -c2-3}c ${cpu cpu4}% ${goto 81} ${color} ${goto 131}${color3}${cpubar cpu4 18}
+${color} ${goto 23} ${exec sensors | grep 'Core 2' | awk '{print $3}' | cut -c2-3}c ${cpu cpu5}% ${goto 81} ${color} ${goto 131}${color3}${cpubar cpu5 18}
+${color} ${goto 23} ${exec sensors | grep 'Core 3' | awk '{print $3}' | cut -c2-3}c ${cpu cpu6}% ${goto 81} ${color} ${goto 131}${color3}${cpubar cpu6 18}
+${color} ${goto 23} ${exec sensors | grep 'Core 3' | awk '{print $3}' | cut -c2-3}c ${cpu cpu8}% ${goto 81} ${color} ${goto 131}${color3}${cpubar cpu7 18}
+${color} ${goto 23} ${exec sensors | grep 'Core 3' | awk '{print $3}' | cut -c2-3}c ${cpu cpu8}% ${goto 81} ${color} ${goto 131}${color3}${cpubar cpu8 18}
 ${color}RAM Usage:$color $mem/$memmax - $memperc%
 ]]
