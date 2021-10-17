@@ -248,7 +248,7 @@ awful.util.mymainmenu = freedesktop.menu.build({
     }
 })
 -- hide menu when mouse leaves it
---awful.util.mymainmenu.wibox:connect_signal("mouse::leave", function() awful.util.mymainmenu:hide() end)
+awful.util.mymainmenu.wibox:connect_signal("mouse::leave", function() awful.util.mymainmenu:hide() end)
 
 --menubar.utils.terminal = terminal -- Set the Menubar terminal for applications that require it
 -- }}}
@@ -311,7 +311,7 @@ globalkeys = my_table.join(
     -- this was originally dt dmenu sript but its now the superior rofi
     awful.key({ altkey }, "space",
     function ()
-        awful.spawn(string.format("rofi -show",
+        awful.spawn(string.format("rofi -combi-modi run,window,drun,ssh -show combi",
         beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
 	end,
     {description = "show dmenu", group = "hotkeys"}),
