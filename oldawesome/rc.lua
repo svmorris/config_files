@@ -137,7 +137,6 @@ awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile.left,
     awful.layout.suit.fair,
-    
     --awful.layout.suit.tile.bottom,
     --awful.layout.suit.tile.top,
     --awful.layout.suit.spiral,
@@ -313,10 +312,10 @@ globalkeys = my_table.join(
     -- this was originally dt dmenu sript but its now the superior rofi
     awful.key({ altkey }, "space",
     function ()
-        awful.spawn(string.format("rofi -combi-modi run,window,drun,ssh -show combi",
+        awful.spawn(string.format("/home/antone/.config/rofi/launchers/colorful/launcher.sh",
         beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
 	end,
-    {description = "show dmenu", group = "hotkeys"}),
+    {description = "show rofi menu for apps", group = "hotkeys"}),
 
     -- Function keys
     awful.key({ }, "F12", function () awful.util.spawn( "xfce4-terminal --drop-down" ) end,
