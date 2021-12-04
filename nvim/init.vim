@@ -22,6 +22,7 @@ set mouse=nv
 
 set background=dark
 set t_Co=256
+set spell spelllang=en
 
 "these 2 make big files lag set nowrap
 set nowrap

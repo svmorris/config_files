@@ -46,6 +46,8 @@ run "xfce4-power-manager"
 # autostart gui apps
 run "com.discordapp.Discord"
 run "signal-desktop"
+run "kdeconnect-indicator"
+run "blueberry"
 run "phone"
 # run "geary"
 
