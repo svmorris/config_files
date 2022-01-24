@@ -168,6 +168,10 @@ alias span='trans :es'
 alias labEnviroment='sudo docker run --rm -ti --network host -v $PWD:/work ctf_parrot'
 
 ############################
+# I re-created Silverblue
+alias update="sudo timeshift --create --comments `date` --tags D && sudo pacman -Syu"
+
+############################
 #kdeconnect to my phone
 alias fphone="kdeconnect-cli -l --id-only | xargs -I{} sh -c 'kdeconnect-cli --pair -d {}'"
 function tp {

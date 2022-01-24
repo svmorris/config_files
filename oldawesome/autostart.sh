@@ -27,17 +27,7 @@ numlockx on
 run "com.github.davidmhewitt.clipped"
 
 
-# screens sometimes doesnt run when it does not find one of the monitors
-# it is very important that screens runs before variety so this will slowly spam screens until it works
- sleep 5;
-~/scripts/screens
- while [ $? != 0 ];do
-     sleep 5
-     notify-send "screens didnt run"
-    ~/scripts/screens
- done
 
-run "nitrogen --restore"
 
 # for some reason this hangs
 run "xfce4-power-manager"
@@ -48,9 +38,18 @@ run "com.discordapp.Discord"
 run "signal-desktop"
 run "kdeconnect-indicator"
 run "blueberry"
-run "phone"
-# run "geary"
+run "nextcloud"
 
+# screens sometimes doesnt run when it does not find one of the monitors
+# it is very important that screens runs before variety so this will slowly spam screens until it works
+ sleep 5;
+~/scripts/screens
+ while [ $? != 0 ];do
+     sleep 5
+     notify-send "screens didnt run"
+    ~/scripts/screens
+ done
+run "nitrogen --restore"
 
 #run "conky -c $HOME/.config/awesome/system-overview"
 #you can set wallpapers in themes as well
@@ -64,3 +63,9 @@ run "phone"
 #run "ckb-next -b"
 #run "discord"
 #run "telegram-desktop"
+
+# run things that exit
+xset r rate 350 50 # keboard rate up
+setxkbmap -option # clear keyboard options
+setxkbmap -option caps:swapescape # swap caps and escape
+setxkbmap gb
