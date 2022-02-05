@@ -58,6 +58,9 @@ Plug 'TroyFletcher/vim-colors-synthwave'
 Plug 'fxn/vim-monochrome'
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 
+" pylint
+Plug 'dense-analysis/ale'
+
 " telescope vim
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -412,6 +415,24 @@ map <leader>hh :call Find_in_files()<CR>
 
 
 
+"""""""""""""""""""""""""""""""""""""""" find all of one type of pylint error
+let t:pylintsearch_mode = 0
+function! Pylint_refactor()
+    if t:pylintsearch_mode == 1
+        let filename = split(expand ('<cWORD>'),":")[0]
+        let linenum = split(expand ('<cWORD>'),":")[1]
+        execute ':e '.filename | execute "normal! ". linenum ."gg"
+        let t:pylintsearch_mode = 0
+    else
+        let searchstring = input('warning-type: ')
+        if searchstring != ""
+            execute "term". "!pylint * | grep -in --colour=auto '". searchstring ."' 2>/dev/null"
+            let t:pylintsearch_mode = 1
+        endif
+    endif
+endfunction
+
+
 
 """""""""""""""""""""""""""""""""""""""""" templates apply to new files
 g:templates_empty_files = 1
@@ -464,3 +485,14 @@ nmap <leader>htd :CocDisable<CR>I<d><Esc>A</d><Esc>^:CocEnable<CR>
 nmap <leader>htl :CocDisable<CR>I<li><Esc>A</li><Esc>^:CocEnable<CR>
 nmap <leader>hta :CocDisable<CR>I<a href=""><Esc>A</a><Esc>^:CocEnable<CR>
 " endif
+
+
+
+
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""" ale linter
+let b:ale_fixers = {'python': ['pylint']}
+let g:ale_lint_on_insert_leave = 1

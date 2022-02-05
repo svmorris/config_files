@@ -151,6 +151,10 @@ alias pulserestart='pulseaudio --kill && pulseaudio --start'
 
 
 ##############################
+# Delete with rubbish bin
+del() { mv "$@" /tmp; }
+
+##############################
 #quick webserver
 alias webUpd='sudo docker run -v $PWD:/usr/local/apache2/htdocs -p 80:80 -p 443:443 httpd'
 alias webUp='php -S 0.0.0.0:1337'
@@ -170,6 +174,10 @@ alias labEnviroment='sudo docker run --rm -ti --network host -v $PWD:/work ctf_p
 ############################
 # I re-created Silverblue
 alias update="sudo timeshift --create --comments `date` --tags D && sudo pacman -Syu"
+
+############################
+# Make pdf of all md files
+alias mdpdf='find . -name *.md -exec markdown-pdf {} \;'
 
 ############################
 #kdeconnect to my phone
@@ -291,3 +299,7 @@ eval "$(starship init bash)"
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [ -f /home/antone/Music/teahouse-electron.git/main/node_modules/tabtab/.completions/electron-forge.bash ] && . /home/antone/Music/teahouse-electron.git/main/node_modules/tabtab/.completions/electron-forge.bash
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION
