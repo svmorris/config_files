@@ -426,7 +426,7 @@ function! Pylint_refactor()
     else
         let searchstring = input('warning-type: ')
         if searchstring != ""
-            execute "term". "!pylint * | grep -in --colour=auto '". searchstring ."' 2>/dev/null"
+            execute "term". "!pylint * | grep -i --colour=auto '". searchstring ."' 2>/dev/null"
             let t:pylintsearch_mode = 1
         endif
     endif
