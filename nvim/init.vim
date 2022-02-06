@@ -494,5 +494,5 @@ nmap <leader>hta :CocDisable<CR>I<a href=""><Esc>A</a><Esc>^:CocEnable<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""" ale linter
-let b:ale_fixers = {'python': ['pylint']}
+let b:ale_fixers = {'python': ['pylint', 'mypy']}
 let g:ale_lint_on_insert_leave = 1
