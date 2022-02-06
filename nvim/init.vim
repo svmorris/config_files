@@ -393,42 +393,32 @@ function ShowDocsPrivate()
 endfunction
 
 
+function! Jump_to_grep_output()
+    let filename = split(expand ('<cWORD>'),":")[0]
+    let linenum = split(expand ('<cWORD>'),":")[1]
+    execute ':e '.filename | execute "normal! ". linenum ."gg"
+endfunction
+map <leader>o :call Jump_to_grep_output()<CR>
 
 """""""""""""""""""""""""""""""""""""""" find strings in files
-let t:findfiles_mode = 0
-function! Find_in_files()
-    if t:findfiles_mode == 1
-        let filename = split(expand ('<cWORD>'),":")[0]
-        let linenum = split(expand ('<cWORD>'),":")[1]
-        execute ':e '.filename | execute "normal! ". linenum ."gg"
-        let t:findfiles_mode = 0
-    else
-        let searchstring = input('string: ')
-        if searchstring != ""
-            execute "term". "!grep -inr --colour=auto '". searchstring ."' 2>/dev/null"
-            let t:findfiles_mode = 1
-        endif
-    endif
 
+function! Find_in_files()
+    let searchstring = input('string: ')
+    if searchstring != ""
+        execute "term". "!grep -inr --colour=auto '". searchstring ."' 2>/dev/null"
+        let t:findfiles_mode = 1
+    endif
 endfunction
 map <leader>hh :call Find_in_files()<CR>
 
 
 
 """""""""""""""""""""""""""""""""""""""" find all of one type of pylint error
-let t:pylintsearch_mode = 0
 function! Pylint_refactor()
-    if t:pylintsearch_mode == 1
-        let filename = split(expand ('<cWORD>'),":")[0]
-        let linenum = split(expand ('<cWORD>'),":")[1]
-        execute ':e '.filename | execute "normal! ". linenum ."gg"
-        let t:pylintsearch_mode = 0
-    else
-        let searchstring = input('warning-type: ')
-        if searchstring != ""
-            execute "term". "!pylint * | grep -i --colour=auto '". searchstring ."' 2>/dev/null"
-            let t:pylintsearch_mode = 1
-        endif
+    let searchstring = input('warning-type: ')
+    if searchstring != ""
+        execute "term". "!pylint * | grep -i --colour=auto '". searchstring ."' 2>/dev/null"
+        let t:pylintsearch_mode = 1
     endif
 endfunction
 
