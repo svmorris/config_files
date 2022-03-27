@@ -1,0 +1,169 @@
+#!/usr/bin/python3
+
+import os
+import sys
+import string
+import subprocess
+
+
+class RecentStack():
+    """
+    This stack is an interface for the file that represents
+    the order in which distroboxes have been called.
+
+    It also includes a few lines to modify, and update them.
+    """
+    def __init__(self):
+        with open("/home/antone/.config/distrobox-manager/recent", "r", encoding="UTF-8")as ifs:
+            tmp_list: list = ifs.read().split('\n')
+
+        self.recent_stack = []
+        for tmp in tmp_list:
+            if len(tmp) > 1:
+                self.recent_stack.append(tmp)
+
+        self.valid_names: list = self._get_valid_list()
+
+
+    @staticmethod
+    def _get_valid_list() -> list[str]:
+        """
+            Use distrobox-list to get a list of all
+            available distroboxes.
+        """
+
+        with subprocess.Popen(['distrobox-list'], stdout=subprocess.PIPE) as proc:
+            stdout_lines = proc.stdout.read().decode('utf-8').split('\n')
+
+
+        # Parse the distrobox-list output.
+        # by default its something like this:
+        #  ID           | NAME                      | STATUS                         | IMAGE
+        #  28d6542db9fe | manjaro                   | Up 2 hours ago                 | docker
+        #  cbcd65fb7dfa | uni-cw4                   | Up About an hour ago           | registry
+        valid_names = ['host']
+        for line in stdout_lines:
+            line = line.split('|')
+            if (len(line) > 2 and line[1].strip() != "NAME"):
+                name = line[1].strip()
+                valid_names.append(name)
+
+        return valid_names
+
+
+    def _save_stack(self) -> None:
+        """ Save the current layout of the stack to the `recent` file """
+
+        ofs = open("/home/antone/.config/distrobox-manager/recent", "w+", encoding="utf-8")
+
+        for entry in self.recent_stack:
+            ofs.write(f"{entry}\n")
+
+        ofs.close()
+
+
+    def add_most_recent(self, name: str) -> None:
+        """
+            Function moves or adds the box indicated by `name`
+            to the top of the stack. This operation will only
+            happen if the box exists according to `distrobox-list`.
+        """
+        name = name.strip()
+
+        if name not in self.valid_names:
+            print("Distrobox with this name does not exist!", file=sys.stderr)
+            sys.exit(-2)
+
+        if name in self.recent_stack:
+            self.recent_stack.remove(name)
+
+        tmp = [name]
+        tmp.extend(self.recent_stack)
+        self.recent_stack = tmp
+
+        self._save_stack()
+
+
+
+def print_help() -> None:
+    """
+        Print out a help message
+    """
+    print("Usage: db [argument] (optional)<box-name>")
+    print("\nAvailable distroboxes:")
+    recent_stack = RecentStack()
+    for item in recent_stack.recent_stack:
+        print(f"-\t{item}")
+    sys.exit(-1)
+
+
+
+def run(name: str) -> None:
+    """
+        Given the name of a valid distro-box image,
+        the function adds it to the top of the recent
+        stack and runs it.
+    """
+    recent_stack = RecentStack()
+
+    # Make sure name is valid
+    for char in name:
+        if char not in string.ascii_letters+string.digits+"_-.":
+            print(f"Invalid name, cannot contain '{char}'", file=sys.stderr)
+
+    recent_stack.add_most_recent(name)
+
+    if name == "host":
+        os.system("NO_DISTROBOX=1 bash")
+
+    os.system(f"distrobox-enter {name}")
+
+
+
+def run_most_recent() -> None:
+    """ Run the last used distrobox """
+    recent_stack = RecentStack()
+    name = recent_stack.recent_stack[0]
+
+    # Make sure name is valid
+    for char in name:
+        if char not in string.ascii_letters+string.digits+"_-.":
+            print(f"Invalid name, cannot contain '{char}'", file=sys.stderr)
+
+    if name == "host":
+        os.system("NO_DISTROBOX=1 bash")
+
+    os.system(f"distrobox-enter {name}")
+
+
+
+def choose() -> None:
+    """
+    Display a choosing screen for all distrobox recently used.
+
+    This will eventually be based on pytermgui
+    """
+
+    recent_stack = RecentStack()
+
+    for i,item in enumerate(recent_stack.recent_stack):
+        print(f"- {i}\t{item}")
+
+    choice: int = int(input(">> "))
+    run(recent_stack.recent_stack[choice])
+
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        run_most_recent()
+
+    elif len(sys.argv) == 2 and sys.argv[1] == "-c":
+        choose()
+
+    elif len(sys.argv) == 2:
+        run(sys.argv[1])
+
+    else:
+        print_help()
+
