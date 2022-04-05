@@ -630,7 +630,11 @@ globalkeys = my_table.join(
 
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn.with_shell("kitty") end,
+    awful.key({ modkey,           }, "Return", function () awful.spawn.with_shell("kitty -e tmux new 'distrobox-manager; $SHELL'") end,
+              {description = terminal, group = "super"}),
+    awful.key({ modkey,  "Shift"  }, "Return", function () awful.spawn.with_shell("kitty -e tmux new 'distrobox-manager -c; $SHELL'") end,
+              {description = terminal, group = "super"}),
+    awful.key({ modkey,  modkey1  }, "Return", function () awful.spawn.with_shell("kitty -e tmux new 'NO_DISTROBOX=1 bash; $SHELL'") end,
               {description = terminal, group = "super"}),
     awful.key({ modkey, "Shift" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),

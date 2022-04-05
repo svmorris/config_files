@@ -44,9 +44,10 @@ ex ()
 #
 # managing paths 
 
-cd "`cat ~/.config/PWD/current`"
+cd "`cat /current || cat ~/.config/PWD/current`"
 
 alias t='echo $PWD > ~/.config/PWD/current'
+alias tt='echo $PWD > /current'
 alias t1='echo $PWD > ~/.config/PWD/c1'
 alias t2='echo $PWD > ~/.config/PWD/c2'
 alias t3='echo $PWD > ~/.config/PWD/c3'
@@ -145,6 +146,8 @@ alias connect='tmux attach -t'
 alias goodnight='cowsay "running backup";sleep 1;bacc;sleep 5;shutdown now'
 #objdump
 alias objdump='objdump -M intel'
+#distro box
+alias d='distrobox-enter'
 #other
 alias asztal='cd ~/.config/asztal/; python3 asztal.py'
 alias pulserestart='pulseaudio --kill && pulseaudio --start'
@@ -289,12 +292,23 @@ if [ "$?" != "0" ]
 then
     tmux
 else
+    # if NO_DISTROBOX is not present
+    env | grep 'NO_DISTROBOX=1' > /dev/null
+    if [ "$?" != "0" ]
+    then
+        # if we are not in distrobox already
+        env | grep 'DISTROBOX' > /dev/null
+        if [ "$?" != "0" ]
+        then
+            distrobox-manager
+        fi
+    fi
     ls
 fi
 
-###############################
-# starship terminal
-eval "$(starship init bash)"
+
+
+
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
@@ -308,3 +322,7 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+###############################
+# starship terminal
+eval "$(starship init bash)"
