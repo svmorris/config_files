@@ -57,7 +57,7 @@ alias t7='echo $PWD > ~/.config/PWD/c7'
 alias t8='echo $PWD > ~/.config/PWD/c8'
 alias t9='echo $PWD > ~/.config/PWD/c9'
 
-alias cd0='cd `cat "~/.config/PWD/current"'
+alias cd0='cd `cat "/current" || cd `cat "~/.config/PWD/current"'
 alias cd1='cd `cat ~/.config/PWD/c1`'
 alias cd2='cd `cat ~/.config/PWD/c2`'
 alias cd3='cd `cat ~/.config/PWD/c3`'
@@ -147,6 +147,7 @@ alias goodnight='cowsay "running backup";sleep 1;bacc;sleep 5;shutdown now'
 alias objdump='objdump -M intel'
 #distro box
 alias d='distrobox-enter'
+alias starship_install="curl -sS https://starship.rs/install.sh | sh"
 #other
 alias asztal='cd ~/.config/asztal/; python3 asztal.py'
 alias pulserestart='pulseaudio --kill && pulseaudio --start'
@@ -271,6 +272,8 @@ PATH=/home/antone/.local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:~/.bi
 PATH=~/.java/jdk-11.0.9+11/bin:$PATH:
 #ruby
 PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+# npm
+PATH=/usr/local/lib/node_modules/:$PATH
 
 
 
@@ -319,3 +322,4 @@ eval "$(starship init bash)"
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
+. "$HOME/.cargo/env"

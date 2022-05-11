@@ -57,6 +57,10 @@ Plug 'ap/vim-templates'
 Plug 'TroyFletcher/vim-colors-synthwave'
 Plug 'fxn/vim-monochrome'
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
+" Plug 'junegunn/rainbow_parentheses.vim'
+
+" Solidity
+Plug 'tomlion/vim-solidity'
 
 " pylint
 Plug 'dense-analysis/ale'
@@ -257,6 +261,7 @@ let g:coc_global_extensions = [
   \ 'coc-tailwindcss', 
   \ 'coc-html-css-support', 
   \ 'coc-tsserver', 
+  \ 'coc-solidity', 
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
