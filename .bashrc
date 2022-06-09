@@ -44,9 +44,10 @@ ex ()
 #
 # managing paths 
 
-cd "`cat ~/.config/PWD/current`"
+cd "`cat /current || cat ~/.config/PWD/current`"
 
 alias t='echo $PWD > ~/.config/PWD/current'
+alias tt='echo $PWD > /current'
 alias t1='echo $PWD > ~/.config/PWD/c1'
 alias t2='echo $PWD > ~/.config/PWD/c2'
 alias t3='echo $PWD > ~/.config/PWD/c3'
@@ -311,9 +312,6 @@ fi
 
 
 
-###############################
-# starship terminal
-eval "$(starship init bash)"
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
@@ -323,3 +321,11 @@ eval "$(starship init bash)"
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
 . "$HOME/.cargo/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+###############################
+# starship terminal
+eval "$(starship init bash)"
