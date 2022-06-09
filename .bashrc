@@ -44,7 +44,7 @@ ex ()
 #
 # managing paths 
 
-cd "`cat /current || cat ~/.config/PWD/current`"
+cd "`cat /current &> /dev/null || cat ~/.config/PWD/current`"
 
 alias t='echo $PWD > ~/.config/PWD/current'
 alias tt='echo $PWD > /current'
