@@ -154,7 +154,8 @@ alias starship_install="curl -sS https://starship.rs/install.sh | sh"
 #other
 alias asztal='cd ~/.config/asztal/; python3 asztal.py'
 alias pulserestart='pulseaudio --kill && pulseaudio --start'
-
+#azure
+alias az='podman run -it mcr.microsoft.com/azure-cli'
 
 ##############################
 # Delete with rubbish bin
@@ -325,3 +326,4 @@ export NVM_DIR="$HOME/.nvm"
 ###############################
 # starship terminal
 eval "$(starship init bash)"
+export PATH="$HOME/.npm-packages/bin:$PATH"
