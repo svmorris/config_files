@@ -22,7 +22,7 @@ theme.fg_normal                                 = "#ffffff"
 theme.fg_focus                                  = "#A77AC4"
 theme.fg_urgent                                 = "#b74822"
 theme.bg_normal                                 = "#010101"--taskbar colour
-theme.bg_focus                                  = "#660066"
+theme.bg_focus                                  = "#63030f"
 theme.bg_urgent                                 = "#ffffff"
 theme.taglist_fg_focus                          = "#ffffff"
 theme.tasklist_bg_focus                         = "#000000"
@@ -408,56 +408,56 @@ function theme.at_screen_connect(s)
             --wibox.container.background(wibox.container.margin(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, 3, 6), "#7197E7"),
 
 
-            arrow("alpha", "#660066"),
-            wibox.container.background(wibox.container.margin(wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal }, 2, 3), "#660066"),
+            arrow("alpha", "#63030f"),
+            wibox.container.background(wibox.container.margin(wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal }, 2, 3), "#63030f"),
 
-            arrow("#660066", "#000000"),
+            arrow("#63030f", "#000000"),
             wibox.container.background(wibox.container.margin(wibox.widget {  }, 2, 3), "#000000"),
-            arrow("#000000", "#660066"),
+            arrow("#000000", "#63030f"),
 
-            wibox.container.background(wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, 2, 3), "#660066"),
+            wibox.container.background(wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, 2, 3), "#63030f"),
 
-            arrow("#660066", "#000000"),
+            arrow("#63030f", "#000000"),
             wibox.container.background(wibox.container.margin(wibox.widget {  }, 2, 3), "#000000"),
-            arrow("#000000", "#660066"),
+            arrow("#000000", "#63030f"),
 
-            wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, 3, 4), "#660066"),
+            wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, 3, 4), "#63030f"),
 
 
 
 
             -- weather and temp
-            --arrow("#660066", "#000000"),
+            --arrow("#63030f", "#000000"),
             --wibox.container.background(wibox.container.margin(wibox.widget {  }, 2, 3), "#000000"),
-            --arrow("#000000", "#660066"),
-            --wibox.container.background(wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, 4, 4), "#660066"),
-            --arrow("#660066", "#000000"),
+            --arrow("#000000", "#63030f"),
+            --wibox.container.background(wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, 4, 4), "#63030f"),
+            --arrow("#63030f", "#000000"),
             --wibox.container.background(wibox.container.margin(wibox.widget {  }, 2, 3), "#000000"),
-            --arrow("#000000", "#660066"),
-            --wibox.container.background(wibox.container.margin(wibox.widget { weathericon, theme.weather.widget, layout = wibox.layout.align.horizontal }, 3, 3), "#660066"),
-            --arrow("#660066", "#000000"),
+            --arrow("#000000", "#63030f"),
+            --wibox.container.background(wibox.container.margin(wibox.widget { weathericon, theme.weather.widget, layout = wibox.layout.align.horizontal }, 3, 3), "#63030f"),
+            --arrow("#63030f", "#000000"),
 
 
 
 
-            arrow("#660066", "#000000"),
+            arrow("#63030f", "#000000"),
             wibox.container.background(wibox.container.margin(wibox.widget {  }, 2, 3), "#000000"),
-            arrow("#000000", "#660066"),
+            arrow("#000000", "#63030f"),
 
-            wibox.container.background(wibox.container.margin(wibox.widget { baticon, bat.widget, layout = wibox.layout.align.horizontal }, 3, 3), "#660066"),
+            wibox.container.background(wibox.container.margin(wibox.widget { baticon, bat.widget, layout = wibox.layout.align.horizontal }, 3, 3), "#63030f"),
 
-            arrow("#660066", "#000000"),
+            arrow("#63030f", "#000000"),
             wibox.container.background(wibox.container.margin(wibox.widget {  }, 2, 3), "#000000"),
-            arrow("#000000", "#660066"),
+            arrow("#000000", "#63030f"),
 
-            wibox.container.background(wibox.container.margin(wibox.widget { nil, neticon, net.widget, layout = wibox.layout.align.horizontal }, 3, 3), "#660066"),
+            wibox.container.background(wibox.container.margin(wibox.widget { nil, neticon, net.widget, layout = wibox.layout.align.horizontal }, 3, 3), "#63030f"),
 
-            arrow("#660066", "#000000"),
+            arrow("#63030f", "#000000"),
             wibox.container.background(wibox.container.margin(wibox.widget {  }, 2, 3), "#000000"),
-            arrow("#000000", "#660066"),
+            arrow("#000000", "#63030f"),
 
-            wibox.container.background(wibox.container.margin(clock, 4, 8), "#660066"),
-            arrow("#660066", "alpha"),
+            wibox.container.background(wibox.container.margin(clock, 4, 8), "#63030f"),
+            arrow("#63030f", "alpha"),
             --]]
             s.mylayoutbox,
         },

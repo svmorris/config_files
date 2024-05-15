@@ -455,7 +455,7 @@ globalkeys = my_table.join(
     -- screenshots
     awful.key({ }, "Print", function () awful.util.spawn("gnome-screenshot") end,
         {description = "screenshot", group = "screenshots"}),
-    awful.key({ "Shift" }, "Print", function () awful.util.spawn( "gnome-screenshot -i" ) end,
+    awful.key({ "Shift" }, "Print", function () awful.util.spawn( "gnome-screenshot -a -c" ) end,
         {description = "screenshot gui", group = "screenshots"}),
     awful.key({ modkey1, }, "Print", function() awful.util.spawn("gnome-screenshot -a") end,
         {description = "screenshot select", group = "screenshots"}),
@@ -692,13 +692,13 @@ globalkeys = my_table.join(
     --awful.key({ modkey1 }, "Up",
     awful.key({ }, "XF86AudioRaiseVolume",
         function ()
-            os.execute(string.format("pamixer -i +1", beautiful.volume.channel))
+            os.execute(string.format("pamixer -i 1", beautiful.volume.channel))
             beautiful.volume.update()
         end),
     --awful.key({ modkey1 }, "Down",
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
-            os.execute(string.format("pamixer -d +1", beautiful.volume.channel))
+            os.execute(string.format("pamixer -d 1", beautiful.volume.channel))
             beautiful.volume.update()
         end),
     awful.key({ }, "XF86AudioMute",

@@ -30,6 +30,11 @@ set nowrap
 
 
 
+" Install Vim-Plug if it's not already installed
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 
 
@@ -70,6 +75,13 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+
+Plug 'mikelue/vim-maven-plugin'
+
+
+" custom
+Plug '~/.local/share/nvim/site/autoload/gpt_vuln_checker'
 
 call plug#end()
 
@@ -491,3 +503,5 @@ nmap <leader>hta :CocDisable<CR>I<a href=""><Esc>A</a><Esc>^:CocEnable<CR>
 """""""""""""""""""""""""""""""""""""""""" ale linter
 let b:ale_fixers = {'python': ['pylint', 'mypy']}
 let g:ale_lint_on_insert_leave = 1
+
+

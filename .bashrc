@@ -143,7 +143,7 @@ alias trw='tmux rename-window'
 alias bye='tmux kill-session'
 alias connect='tmux attach -t'
 #shutdown
-alias goodnight='cowsay "running backup";sleep 1;bacc;sleep 5;shutdown now'
+alias goodnight='backup;sleep 5;shutdown now'
 #objdump
 alias objdump='objdump -M intel'
 #distro box
@@ -215,12 +215,6 @@ function tm {
     fi
 }
 
-
-function runtmux {
-
-    echo ''
-
-}
 
 #############################
 #cyclic for developing exploits
@@ -295,8 +289,7 @@ if [ "$?" != "0" ]
 then
     tmux
 else
-    # if NO_DISTROBOX is not present
-    env | grep 'NO_DISTROBOX=1' > /dev/null
+    env | grep 'NO_DISTROBOX' > /dev/null
     if [ "$?" != "0" ]
     then
         # if we are not in distrobox already
@@ -308,6 +301,7 @@ else
     fi
     ls
 fi
+
 
 
 
@@ -329,3 +323,7 @@ export NVM_DIR="$HOME/.nvm"
 ###############################
 # starship terminal
 eval "$(starship init bash)"
+
+export PATH=$PATH:/home/antone/bin
+
+source '/home/antone/lib/azure-cli/az.completion'
