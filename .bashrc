@@ -148,11 +148,14 @@ alias goodnight='backup;sleep 5;shutdown now'
 alias objdump='objdump -M intel'
 #distro box
 alias d='distrobox-enter'
+alias dm='distrobox-manager'
+alias dmc='distrobox-manager -c'
 alias starship_install="curl -sS https://starship.rs/install.sh | sh"
 #other
 alias asztal='cd ~/.config/asztal/; python3 asztal.py'
 alias pulserestart='pulseaudio --kill && pulseaudio --start'
-
+#azure
+alias az='podman run -it mcr.microsoft.com/azure-cli'
 
 ##############################
 # Delete with rubbish bin
@@ -323,7 +326,4 @@ export NVM_DIR="$HOME/.nvm"
 ###############################
 # starship terminal
 eval "$(starship init bash)"
-
-export PATH=$PATH:/home/antone/bin
-
-source '/home/antone/lib/azure-cli/az.completion'
+export PATH="$HOME/.npm-packages/bin:$PATH"
