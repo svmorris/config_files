@@ -236,29 +236,6 @@ alias important='vim /home/$USER/.IMPORTANT'
 alias copy='xclip -selection clipboard'
 
 
-#====================================== computer specific stuff =================================
-if [ `cat /etc/hostname` == "life" ]; then
-    # aliases
-    alias picom='compton'
-    alias termite='alacritty'
-    #gcc
-    alias gcc='gcc-10'
-    alias g++='g++-10'
-    #atp
-    alias atp='apt'
-    alias atp-get='apt-get'
-
-    ##############################
-    #make tmux work
-    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/hgsc/boost_libs/lib:/stornext/snfs1/next-gen/drio-scratch/tmux/local/lib
-fi
-if [ `cat /etc/hostname` == "laptop04" ]; then
-
-    ##############################
-    #loopback screen as webcam
-    alias webcamloop='~/.config/v4l2loopback/run.sh'
-fi
-#====================================== !computer specific stuff =================================
 
 ##############################
 ## paths
@@ -299,7 +276,8 @@ else
         env | grep 'DISTROBOX' > /dev/null
         if [ "$?" != "0" ]
         then
-            distrobox-manager
+            # distrobox-manager
+	    echo ""
         fi
     fi
     ls
@@ -314,10 +292,10 @@ fi
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [ -f /home/antone/Music/teahouse-electron.git/main/node_modules/tabtab/.completions/electron-forge.bash ] && . /home/antone/Music/teahouse-electron.git/main/node_modules/tabtab/.completions/electron-forge.bash
 
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION
-. "$HOME/.cargo/env"
+# # BEGIN_KITTY_SHELL_INTEGRATION
+# if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# # END_KITTY_SHELL_INTEGRATION
+# . "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
