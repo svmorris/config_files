@@ -14,21 +14,22 @@ ex ()
 {
   if [ -f $1 ] ; then
     case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.txz)       tar Jxvf $1  ;;
-      *.tar.zst)   unzstd $1    ;;
+      *.tar.bz2)   tar xjf $1                   ;;
+      *.tar.gz)    tar xzf $1                   ;;
+      *.bz2)       bunzip2 $1                   ;;
+      *.rar)       unrar x $1                   ;;
+      *.gz)        gunzip $1                    ;;
+      *.tar)       tar xf $1                    ;;
+      *.tbz2)      tar xjf $1                   ;;
+      *.tgz)       tar xzf $1                   ;;
+      *.zip)       unzip $1                     ;;
+      *.Z)         uncompress $1                ;;
+      *.7z)        7z x $1                      ;;
+      *.deb)       ar x $1                      ;;
+      *.tar.xz)    tar xf $1                    ;;
+      *.txz)       tar Jxvf $1                  ;;
+      *.tar.zst)   unzstd $1                    ;;
+      *.lzma)      xz --decompress --keep $1    ;;
       *)           echo "'$1' cannot be extracted via ex()" ;;
     esac
   else
@@ -96,7 +97,7 @@ alias nc='nc -v'
 alias ncs='nc'
 alias lnc='nc -l -p'
 #vim
-alias v='vim'
+alias v='/bin/vim'
 alias nv='nvim'
 alias vim='nvim'
 alias notes="nvim notes.md"
@@ -284,6 +285,9 @@ else
 fi
 
 
+#############################
+# esp-idf
+alias get_idf='. $HOME/Music/esp-idf/export.sh'
 
 
 
@@ -311,3 +315,6 @@ PERL5LIB="/home/antone/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LI
 PERL_LOCAL_LIB_ROOT="/home/antone/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/antone/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/antone/perl5"; export PERL_MM_OPT;
+
+
+
