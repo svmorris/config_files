@@ -38,8 +38,6 @@ set spell spelllang=en
 set cmdheight=1
 
 
-
-
 " Vim plug stuff
 "" Install Vim-Plug if it's not already installed.
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -170,17 +168,39 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
-"" Cock completion stuff
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
+" Do not preselect completion items
+set completeopt=menuone,noinsert,noselect
+
+" Use <Tab> to navigate completion menu (first Tab selects first item)
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible()
+      \ ? coc#pum#next(1)
+      \ : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
+
+" Use <S-Tab> to navigate completion menu backwards
+inoremap <silent><expr> <S-Tab>
+      \ coc#pum#visible()
+      \ ? coc#pum#prev(1)
+      \ : "\<C-h>"
+
+" <Enter> confirms completion ONLY if an item was explicitly selected,
+" otherwise it inserts a normal newline
+inoremap <silent><expr> <CR>
+      \ coc#pum#visible() && coc#pum#info()['index'] != -1
+      \ ? coc#pum#confirm()
+      \ : "\<CR>"
+
+" Manually trigger completion
 inoremap <silent><expr> <C-Space> coc#refresh()
+
+" Helper function: check if cursor is after whitespace
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1] =~# '\s'
 endfunction
+
 
 "" f2 and gd are genuinely good. The rest remain bc I don't remember what they
 nmap <F2> <Plug>(coc-rename)
