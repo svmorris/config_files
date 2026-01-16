@@ -68,16 +68,20 @@ Plug 'svmorris/tokyonight-vim'
 
 Plug 'norcalli/nvim-colorizer.lua'
 
+Plug 'n1ghtmare/noirblaze-vim'
+
 call plug#end()
 
 
 
-" Tokyo night configs. (truecolour and such)
-set termguicolors
-let g:tokyonight_style = 'night'
-let g:tokyonight_enable_italic = 0
-colorscheme tokyonight
+" Colour themes
+" set termguicolors
+" let g:tokyonight_style = 'night'
+" let g:tokyonight_enable_italic = 0
+" colorscheme tokyonight
 
+syntax enable
+colorscheme noirblaze
 
 " Nasm is the only good assembler.
 autocmd FileType asm set syntax=nasm

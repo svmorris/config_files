@@ -1,4 +1,5 @@
 {
   "snippets.ultisnips.pythonPrompt": false,
-  "suggest.noselect": true
+  "suggest.noselect": true,
+  "semanticTokens.enable": false
 }
