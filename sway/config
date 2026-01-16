@@ -239,5 +239,8 @@ bar {
 ### Title bar
 default_border none
 
+### Screenshots
+bindsym Print exec sh -c 'FILE="$HOME/Pictures/screenshot-$(date "+%Y-%m-%d_%H-%M-%S").png" grim -g "$(slurp)" - | tee "$FILE" | wl-copy'
+bindsym Shift+Print exec sh -c 'FILE="$HOME/Pictures/screenshot-full-$(date "+%Y-%m-%d_%H-%M-%S").png" grim - | tee "$FILE" | wl-copy'
 
 include /etc/sway/config.d/*

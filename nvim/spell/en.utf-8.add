@@ -19,3 +19,5 @@ uint16
 endien
 struct
 evt
+num
+bindsym
