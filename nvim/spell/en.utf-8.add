@@ -21,3 +21,11 @@ struct
 evt
 num
 bindsym
+bindsym
+bindsym
+swaylock
+Ctrl
+floating
+displayconf
+swaybar
+stdout

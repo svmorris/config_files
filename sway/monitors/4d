@@ -1,0 +1,140 @@
+### AOC side display
+output HDMI-A-1 \
+    mode 1920x1080@60Hz \
+    position 4300 1010 \
+    scale 1 \
+    transform normal
+
+### LG Ultragear high-refresh display (primary)
+output DP-3 \
+    mode 1920x1080@144Hz \
+    position 4300 3170 \
+    scale 1 \
+    transform normal
+
+### LG Ultrawide (right)
+output DP-2 \
+    mode 2560x1080@60Hz \
+    position 5265 2090 \
+    scale 1 \
+    transform normal
+
+### LG Ultrawide (left)
+output DP-1 \
+    mode 2560x1080@60Hz \
+    position 2705 2090 \
+    scale 1 \
+    transform normal
+
+
+set $mdown DP-3
+set $mup HDMI-A-1
+set $mleft DP-1
+set $mright DP-2
+
+workspace 1 output $mdown
+workspace 2 output $mdown
+workspace 3 output $mdown
+workspace 4 output $mdown
+workspace 5 output $mleft
+workspace 6 output $mleft
+workspace 7 output $mleft
+workspace 8 output $mright
+workspace 9 output $mright
+workspace 0 output $mright
+workspace q output $mup
+workspace w output $mup
+workspace e output $mup
+
+# Laptop screen workspaces
+
+## Switch to workspace directly
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 0
+bindsym $mod+q workspace q
+bindsym $mod+w workspace w
+bindsym $mod+e workspace e
+
+# Move windows to different workspaces
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 0
+bindsym $mod+Shift+q move container to workspace q
+bindsym $mod+Shift+w move container to workspace w
+bindsym $mod+Shift+e move container to workspace e
+
+
+
+
+## Pre-launch
+    assign [app_id="org.chromium.Chromium"] 8
+    exec flatpak run org.chromium.Chromium
+
+    assign [app_id="firefox"] 8
+    exec firefox
+
+    assign [app_id="com.spotify.Client"] q
+    exec flatpak run com.spotify.Client
+
+    assign [app_id="com.discordapp.Discord"] q
+    exec flatpak run com.discordapp.Discord
+
+### Status Bar
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position bottom
+    output $mup
+    tray_output $mup
+    gaps 30
+    height 30
+
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+    colors {
+        statusline            #e6e6eb
+        background            #0b0b0f
+        separator             #2a2a40
+
+        focused_workspace     #8a2be2        #8a2be2        #0b0b0f
+        active_workspace      #12121a        #12121a        #b48cff
+        inactive_workspace    #0b0b0f00      #0b0b0f00      #5c2d91
+    }
+}
+bar {
+    position top
+    output $mdown
+    output $mleft
+    output $mright
+    tray_output $mup
+    height 6
+    gaps 3
+    workspace_min_width 200
+
+    colors {
+        statusline            #e6e6eb
+        background            #0b0b0f
+        separator             #2a2a40
+
+        focused_workspace     #8a2be2        #8a2be2        #8a2be2
+        active_workspace      #12121a        #12121a        #12121a
+        inactive_workspace    #0b0b0f00      #0b0b0f00      #0b0b0f00
+    }
+}
