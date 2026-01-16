@@ -9,3 +9,8 @@ configs
 Nasm
 config
 Struct
+spotify
+flatpak
+firefox
+bindsym
+fullscreen

@@ -66,6 +66,8 @@ Plug 'Yggdroot/indentLine'
 
 Plug 'svmorris/tokyonight-vim'
 
+Plug 'norcalli/nvim-colorizer.lua'
+
 call plug#end()
 
 

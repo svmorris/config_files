@@ -1,0 +1,6 @@
+#!/bin/bash
+
+killall wofi
+
+# Normal window is gnome specific I think
+wofi --show drun,run --conf ~/.config/config_files/wofi/config -s ~/.config/config_files/wofi/style.css
