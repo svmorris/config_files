@@ -113,3 +113,7 @@ bindsym Shift+Print exec sh -c 'FILE="$HOME/Pictures/screenshot-full-$(date "+%Y
 
 include /etc/sway/config.d/*
 
+
+
+### Autostart
+exec ~/.config/config_files/scripts/tunesia.sh >> ~/logs

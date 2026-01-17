@@ -1,0 +1,12 @@
+[Unit]
+Description=Tunesia script
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/antone/.config/config_files/scripts/tunesia.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
