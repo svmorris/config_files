@@ -5,34 +5,43 @@
      scale 1 \
      transform normal
 
- # Rotated LG display (portrait)
+# Rotated LG display (portrait)
  output HDMI-A-1 \
      mode 1920x1080@60Hz \
      position 1920 0 \
      scale 1 \
      transform 270
 
- # External AOC display
+# External AOC display
  output DP-3 \
      mode 1920x1080@60Hz \
      position 3000 484 \
      scale 1 \
      transform normal
 
-workspace 1 output DP-3
-workspace 2 output DP-3
-workspace 3 output DP-3
-workspace 4 output DP-3
-workspace 5 output DP-3
-workspace 6 output DP-3
+
+set $mright DP-3
+set $mmid HDMI-A-1
+set $mleft eDP-1
+
+
+workspace 1 output $mright
+workspace 2 output $mright
+workspace 3 output $mright
+workspace 4 output $mright
+workspace 5 output $mright
+workspace 6 output $mright
+workspace 7 output $mright
 
 # External monitor workspaces
-workspace 8 output HDMI-A-1
-workspace 7 output HDMI-A-1
+workspace 8 output $mmid
+workspace 9 output $mmid
+workspace 0 output $mmid
 
 # Laptop screen workspaces
-workspace 0 output eDP-1
-workspace 9 output eDP-1
+workspace q output $mleft
+workspace w output $mleft
+workspace e output $mleft
 
 ## Switch to workspace directly
 bindsym $mod+1 workspace number 1
@@ -45,28 +54,81 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 0
+bindsym $mod+q workspace number q
+bindsym $mod+w workspace number w
+bindsym $mod+e workspace number e
+
 # Move windows to different workspaces
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 0
+bindsym $mod+Shift+1 move to workspace number 1
+bindsym $mod+Shift+2 move to workspace number 2
+bindsym $mod+Shift+3 move to workspace number 3
+bindsym $mod+Shift+4 move to workspace number 4
+bindsym $mod+Shift+5 move to workspace number 5
+bindsym $mod+Shift+6 move to workspace number 6
+bindsym $mod+Shift+7 move to workspace number 7
+bindsym $mod+Shift+8 move to workspace number 8
+bindsym $mod+Shift+9 move to workspace number 9
+bindsym $mod+Shift+0 move to workspace number 0
+bindsym $mod+Shift+q move to workspace q
+bindsym $mod+Shift+w move to workspace w
+bindsym $mod+Shift+e move to workspace e
+
 
 ## Pre-launch
-assign [app_id="org.chromium.Chromium"] 8
-exec flatpak run org.chromium.Chromium
+    assign [app_id="org.chromium.Chromium"] 8
+    exec flatpak run org.chromium.Chromium
 
-assign [app_id="firefox"] 7
-exec firefox
+    assign [app_id="firefox"] 9
+    exec firefox
 
-assign [app_id="com.slack.Slack"] 0
-exec flatpak run com.slack.Slack
+    assign [app_id="com.slack.Slack"] q
+    exec flatpak run com.slack.Slack
 
-assign [app_id="com.spotify.Client"] 0
-exec flatpak run com.spotify.Client
+    assign [app_id="com.spotify.Client"] q
+    exec flatpak run com.spotify.Client
 
+
+### Status Bar
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position bottom
+    output $mleft
+    tray_output $mleft
+    gaps 30
+    height 30
+
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+    colors {
+        statusline            #e6e6eb
+        background            #0b0b0f
+        separator             #2a2a40
+
+        focused_workspace     #8a2be2        #8a2be2        #0b0b0f
+        active_workspace      #12121a        #12121a        #b48cff
+        inactive_workspace    #0b0b0f00      #0b0b0f00      #5c2d91
+    }
+}
+
+bar {
+    position top
+    output $mmid
+    output $mright
+    tray_output $mleft
+    height 6
+    gaps 3
+    workspace_min_width 200
+
+    colors {
+        statusline            #e6e6eb
+        background            #0b0b0f
+        separator             #2a2a40
+
+        focused_workspace     #8a2be2        #8a2be2        #8a2be2
+        active_workspace      #12121a        #12121a        #12121a
+        inactive_workspace    #0b0b0f00      #0b0b0f00      #0b0b0f00
+    }
+}
