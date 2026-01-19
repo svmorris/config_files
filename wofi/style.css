@@ -9,13 +9,13 @@
     border: 1px solid;
     border-color: rgb(138, 43, 226); /* purple accent */
     border-radius: 10px;
-    background-color: #0b0b0f; /* near-black */
+    background-color: rgba(11, 11, 15, 0.8); /* #0b0b0f @ 80% */
     color: #e6e6eb;
 }
 
 #input {
     margin: 15px;
-    background-color: #12121a; /* dark black */
+    background-color: rgba(18, 18, 26, 0.8); /* #12121a @ 80% */
     color: #e6e6eb;
     border-radius: 25px;
     border: 2px solid rgb(92, 45, 145); /* muted purple */
@@ -31,7 +31,7 @@
 }
 
 #entry:selected {
-    background-color: rgb(92, 45, 145); /* purple highlight */
+    background-color: rgba(92, 45, 145, 0.8); /* purple highlight @ 80% */
     border-radius: 0px;
     border: none;
     outline: none;
@@ -46,11 +46,12 @@
     padding-right: 10px;
 }
 
+/* Reference palette (unchanged, informational only) */
 #colors {
-    color: #0b0b0f;   /* primary black */
-    color: #12121a;   /* secondary black */
-    color: #1b1b2a;   /* elevated surface */
-    color: #2a2a40;   /* borders / dividers */
-    color: rgb(138, 43, 226); /* primary purple */
-    color: rgb(92, 45, 145);  /* muted purple */
+    color: #0b0b0f;
+    color: #12121a;
+    color: #1b1b2a;
+    color: #2a2a40;
+    color: rgb(138, 43, 226);
+    color: rgb(92, 45, 145);
 }
