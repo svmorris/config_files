@@ -46,3 +46,7 @@ desc
 type
 Autostart
 params
+structs
+inidividual
+HCIp
+offsetof

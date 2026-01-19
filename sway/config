@@ -8,6 +8,7 @@ set $up k
 set $right l
 set $term kitty
 set $menu exec ~/.config/config_files/scripts/wofilauncher
+set $XDG_CURRENT_DESKTOP sway
 
 # This doesn't exist
 # include /etc/sway/config-vars.d/*
@@ -114,10 +115,23 @@ bindsym Shift+Print exec sh -c 'FILE="$HOME/Pictures/screenshot-full-$(date "+%Y
 include /etc/sway/config.d/*
 
 
-### Volume keys
+### Audio keys
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
 
 ### Autostart
 exec ~/.config/config_files/scripts/tunesia.sh >> ~/logs
+
+
+
+### Screen recording
+exec_always {
+    systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    systemctl --user restart xdg-desktop-portal.service
+}
