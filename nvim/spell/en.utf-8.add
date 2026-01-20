@@ -50,3 +50,7 @@ structs
 inidividual
 HCIp
 offsetof
+proc
+softirq
+irq
+iowait
