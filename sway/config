@@ -137,7 +137,6 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 
 ### Autostart
-exec ~/.config/config_files/scripts/tunesia.sh >> ~/logs
 
 # clipboard
 exec_always --no-startup-id wl-paste --type text --watch clipman store

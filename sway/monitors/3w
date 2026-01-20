@@ -84,8 +84,8 @@ bindsym $mod+Shift+e move to workspace e
     assign [app_id="com.slack.Slack"] q
     exec flatpak run com.slack.Slack
 
-    assign [app_id="com.spotify.Client"] q
-    exec flatpak run com.spotify.Client
+    #assign [app_id="com.spotify.Client"] q
+    #exec flatpak run com.spotify.Client
 
 
 ### Status Bar

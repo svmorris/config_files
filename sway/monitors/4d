@@ -138,3 +138,7 @@ bar {
         inactive_workspace    #0b0b0f00      #0b0b0f00      #0b0b0f00
     }
 }
+
+
+### Autostart
+exec ~/.config/config_files/scripts/tunesia.sh >> ~/logs
