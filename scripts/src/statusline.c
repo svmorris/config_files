@@ -25,7 +25,8 @@ struct cpu_measurement {
     uint32_t guest_nice;
 };
 
-void getreading(struct cpu_measurement *mes);
+float get_cpu();
+void get_cpu_reading(struct cpu_measurement *mes);
 
 
 int main()
@@ -34,26 +35,8 @@ int main()
     printf("CPU ");
     while (1)
     {
-        struct cpu_measurement mes = {0};
-        getreading(&mes);
 
-        uint32_t total = mes.user + mes.nice + mes.system + mes.idle + mes.iowait + mes.irq + mes.softirq + mes.steal + mes.guest + mes.guest_nice;
-        uint32_t idle = mes.idle + mes.iowait;
-
-        sleep(DELAY);
-
-        struct cpu_measurement mes1 = {0};
-        getreading(&mes1);
-
-        uint32_t total1 = mes1.user + mes1.nice + mes1.system + mes1.idle + mes1.iowait + mes1.irq + mes1.softirq + mes1.steal + mes1.guest + mes1.guest_nice;
-        uint32_t idle1 = mes1.idle + mes1.iowait;
-
-        float total_delta = (float)(total1 - total);
-        float idle_delta = (float)(idle1 - idle);
-
-        float load = ((total_delta - idle_delta) / total_delta) * 100; 
-
-
+        float load = get_cpu();
         printf("CPU ┃");
         uint8_t barcount = load/4;
         for (int i = 0; i < 25; i++)
@@ -81,7 +64,32 @@ int main()
 
 }
 
-void getreading(struct cpu_measurement *mes)
+
+float get_cpu()
+{
+    struct cpu_measurement mes = {0};
+    get_cpu_reading(&mes);
+
+    uint32_t total = mes.user + mes.nice + mes.system + mes.idle + mes.iowait + mes.irq + mes.softirq + mes.steal + mes.guest + mes.guest_nice;
+    uint32_t idle = mes.idle + mes.iowait;
+
+    sleep(DELAY);
+
+    struct cpu_measurement mes1 = {0};
+    get_cpu_reading(&mes1);
+
+    uint32_t total1 = mes1.user + mes1.nice + mes1.system + mes1.idle + mes1.iowait + mes1.irq + mes1.softirq + mes1.steal + mes1.guest + mes1.guest_nice;
+    uint32_t idle1 = mes1.idle + mes1.iowait;
+
+    float total_delta = (float)(total1 - total);
+    float idle_delta = (float)(idle1 - idle);
+
+    float load = ((total_delta - idle_delta) / total_delta) * 100; 
+
+    return load;
+}
+
+void get_cpu_reading(struct cpu_measurement *mes)
 {
     FILE *fp;
     int n = 0;
