@@ -50,7 +50,7 @@ endif
 call plug#begin('~/.local/share/nvim/site/autoload/')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 
 Plug 'machakann/vim-highlightedyank'
 Plug 'https://github.com/kien/ctrlp.vim.git'
@@ -288,11 +288,16 @@ map <leader>hh :call Find_in_files()<CR>
 
 
 " Ale stuff
-let b:ale_fixers = {'python': ['pylint', 'mypy']}
-let g:ale_lint_on_insert_leave = 1
+" let b:ale_fixers = {'python': ['pylint', 'mypy']}
+" let g:ale_lint_on_insert_leave = 1
+" let g:ale_linters_ignore = { 'c':   ['*'], 'cpp': ['*']}
 
 " Fuck the providers
 let g:loaded_python3_provider = 0
 let g:loaded_node_provider    = 0
 let g:loaded_perl_provider    = 0
 let g:loaded_ruby_provider    = 0
+
+
+" Some stupid plugin is enabling this
+set conceallevel=0

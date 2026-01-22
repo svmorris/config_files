@@ -1,0 +1,42 @@
+# Source: https://clangd.llvm.org/config
+
+Diagnostics:
+  # Suppress: [ * ] // disables this whole section
+  Suppress: [ ]
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
+  Includes:
+    AnalyzeAngledIncludes: false                 # Check unused <> includes [14]
+  ClangTidy:
+    # ClangTidy is supposed to have some good things
+    # but I have not bothered to look through the config
+    # yet.
+    # https://clang.llvm.org/extra/clang-tidy/checks/list.html
+    Remove: '*'
+
+CompileFlags:
+  Remove: [-W*]
+
+
+InlayHints:
+  Enabled: true
+  ParameterNames: false
+  DeducedTypes: true      # useless in c, but nice if I ever do c++
+  Designators: true       # the numbers in arrays. Pretty cool
+  BlockEnd: true          # Labels at the end of a block like function name
+  DefaultArguments: true  # C++ only feature
+  TypeNameLimit: 20       # Limits length of type hints to 20 characters
+
+
+Completion:
+  AllScopes: Yes                  # Suggest symbols from non-visible scopes [15]
+  ArgumentLists: FullPlaceholders # 'None', 'OpenDelimiter', 'Delimiters', 'FullPlaceholders' [17]
+  HeaderInsertion: Never          # 'IWYU' (default) or 'Never' [18]
+  CodePatterns: All               # Suggest snippets and common patterns [18, 19]
+  MacroFilter: ExactPrefix        # 'ExactPrefix' (default) or 'FuzzyMatch' [19]
+
+
+# Disabling certain highlight groups
+SemanticTokens:
+  DisabledKinds: [ ]            # https://clangd.llvm.org/features#kinds
+  DisabledModifiers: [ ]        # https://clangd.llvm.org/features#modifiers

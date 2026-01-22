@@ -1,9 +1,4 @@
 {
   "snippets.ultisnips.pythonPrompt": false,
   "suggest.noselect": true,
-  "semanticTokens.enable": false,
-  "clangd.arguments": [
-    "--clang-tidy",
-    "--clang-tidy-checks=-clang-analyzer-security.insecureAPI.*,-cert-*"
-  ]
 }
