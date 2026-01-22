@@ -54,3 +54,4 @@ proc
 softirq
 irq
 iowait
+wpctl

@@ -26,6 +26,8 @@ struct cpu_measurement {
 };
 
 float get_cpu();
+float get_volume();
+void printbars(float value);
 void get_cpu_reading(struct cpu_measurement *mes);
 
 
@@ -33,20 +35,19 @@ int main()
 {
 
     printf("CPU ");
+    fflush(stdout);
     while (1)
     {
 
+        float volume = get_volume();
+        printf("VOL ");
+        printbars(volume);
+        printf("%.1f%%\t\t", volume);
+
         float load = get_cpu();
-        printf("CPU ┃");
-        uint8_t barcount = load/4;
-        for (int i = 0; i < 25; i++)
-        {
-            if (i < barcount)
-                printf("═");
-            else
-                printf(" ");
-        }
-        printf("┃ %.1f%%\t\t", load);
+        printf("CPU ");
+        printbars(load);
+        printf("%.1f%%\t\t", load);
 
 
         // date stuff
@@ -61,9 +62,60 @@ int main()
         fflush(stdout);
     }
 
-
 }
 
+void printbars(float value)
+{
+    printf("┃");
+    uint8_t barcount = value/4;
+    for (int i = 0; i < 25; i++)
+    {
+        if (i < barcount)
+            printf("═");
+        else
+            printf(" ");
+    }
+    printf("┃");
+}
+
+//wpctl get-volume @DEFAULT_AUDIO_SINK@
+float get_volume()
+{
+    FILE *fp;
+    char *cmd = "wpctl get-volume @DEFAULT_AUDIO_SINK@";
+    char *outbuf = malloc(0xff);
+    float volume = 0.0;
+
+    if (outbuf == NULL)
+    {
+        perror("malloc failed");
+        free(outbuf);
+        return -1.0;
+    }
+
+    fp = popen(cmd, "r");
+    if (fp == NULL)
+    {
+        perror("Could not run wpctl");
+        fclose(fp);
+        free(outbuf);
+        return -1.0;
+    }
+
+    if (fgets(outbuf, 0xfe, fp) != NULL)
+    {
+        if (sscanf(outbuf, "Volume: %f", &volume) == 1)
+        {
+            return volume*100;
+        }
+        perror("Scanf failed");
+        return -1.0;
+    }
+
+    fclose(fp);
+    free(outbuf);
+    return 0.0;
+}
 
 float get_cpu()
 {
