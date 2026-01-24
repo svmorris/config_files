@@ -71,7 +71,7 @@ void printbars(float value)
     for (int i = 0; i < 25; i++)
     {
         if (i < barcount)
-            printf("═");
+           printf("═");
         else
             printf(" ");
     }
@@ -97,22 +97,25 @@ float get_volume()
     if (fp == NULL)
     {
         perror("Could not run wpctl");
-        fclose(fp);
+        pclose(fp);
         free(outbuf);
         return -1.0;
     }
 
     if (fgets(outbuf, 0xfe, fp) != NULL)
     {
+        pclose(fp);
         if (sscanf(outbuf, "Volume: %f", &volume) == 1)
         {
+            free(outbuf);
             return volume*100;
         }
         perror("Scanf failed");
+        free(outbuf);
         return -1.0;
     }
 
-    fclose(fp);
+    pclose(fp);
     free(outbuf);
     return 0.0;
 }

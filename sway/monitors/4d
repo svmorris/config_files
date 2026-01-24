@@ -106,7 +106,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command /home/antone/.config/config_files/scripts/status_line
+    status_command '/home/antone/.config/config_files/scripts/status_line 2> ~/statuserr'
 
 
     colors {
