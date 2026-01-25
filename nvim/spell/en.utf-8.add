@@ -90,3 +90,5 @@ VariableCase
 Wunused
 bugprone
 CompileFlags
+BD
+ADDR
