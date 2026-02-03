@@ -88,8 +88,8 @@ bindsym $mod+Shift+e move container to workspace e
     assign [app_id="firefox"] 8
     exec firefox
 
-    assign [app_id="com.spotify.Client"] q
-    exec flatpak run com.spotify.Client
+    # assign [app_id="com.spotify.Client"] q
+    # exec flatpak run com.spotify.Client
 
     assign [app_id="com.discordapp.Discord"] q
     exec flatpak run com.discordapp.Discord

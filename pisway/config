@@ -71,6 +71,8 @@ bar {
 assign [app_id="minicom.sh"] 1
 exec /home/antone/.config/sway/minicom.sh
 
+assign [app_id="clock.sh"] 2
+exec /home/antone/.config/sway/clock.sh
 
 ### Input configuration
 input * {
