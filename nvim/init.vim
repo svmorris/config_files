@@ -252,7 +252,7 @@ function ConsoleLog()
     elseif ft == 'javascript'
         execute "normal! oconsole.log('" . value . ": ', " . value . ", typeof(" . value . "));"
     elseif ft == 'c'
-        execute "normal! oprintf(\"%%x\\n\", " . value . ");"
+        execute "normal! oprintf(\"" . value . ": %%x\\n\", " . value . ");"
         execute "normal! F%x"
     elseif ft == 'cpp'
         execute "normal! ocout << \"" . value . ": \" << " . value . " << endl;"
