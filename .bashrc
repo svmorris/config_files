@@ -130,3 +130,4 @@ alias get_idf='. $HOME/Music/esp-idf/export.sh'
 # Starship
 eval "$(starship init bash)"
 
+. "$HOME/.cargo/env"

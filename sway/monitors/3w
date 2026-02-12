@@ -13,14 +13,14 @@
      transform 270
 
 # External AOC display
- output DP-3 \
+ output DP-1 \
      mode 1920x1080@60Hz \
      position 3000 484 \
      scale 1 \
      transform normal
 
 
-set $mright DP-3
+set $mright DP-1
 set $mmid HDMI-A-1
 set $mleft eDP-1
 
@@ -75,17 +75,17 @@ bindsym $mod+Shift+e move to workspace e
 
 
 ## Pre-launch
-    assign [app_id="org.chromium.Chromium"] 8
-    exec flatpak run org.chromium.Chromium
+ #   assign [app_id="org.chromium.Chromium"] 8
+ #   exec flatpak run org.chromium.Chromium
 
-    assign [app_id="firefox"] 9
-    exec firefox
+ #   assign [app_id="firefox"] 9
+ #   exec firefox
 
-    assign [app_id="com.slack.Slack"] q
-    exec flatpak run com.slack.Slack
+ #   assign [app_id="com.slack.Slack"] q
+ #   exec flatpak run com.slack.Slack
 
-    #assign [app_id="com.spotify.Client"] q
-    #exec flatpak run com.spotify.Client
+ #   #assign [app_id="com.spotify.Client"] q
+ #   #exec flatpak run com.spotify.Client
 
 
 ### Status Bar
