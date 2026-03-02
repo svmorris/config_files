@@ -13,14 +13,14 @@
      transform 270
 
 # External AOC display
- output DP-1 \
+ output DP-2 \
      mode 1920x1080@60Hz \
-     position 3000 484 \
+     position 3000 405 \
      scale 1 \
      transform normal
 
 
-set $mright DP-1
+set $mright DP-2
 set $mmid HDMI-A-1
 set $mleft eDP-1
 
