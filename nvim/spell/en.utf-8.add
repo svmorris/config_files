@@ -96,6 +96,27 @@ BLE
 wireshark
 NRF
 checkFreeSpaces
+<<<<<<< HEAD
 Ellies
 zymbit
 rpi
+=======
+warmup
+GPIO
+usbd
+PID
+VID
+init
+Msg
+usb
+fn
+keyflag
+bitmask
+KFLAG
+keyflags
+ie
+keymap
+keyscan
+unsets
+ctzll
+>>>>>>> da6fd77264785d40e3c34f0c7602e831bc930b98

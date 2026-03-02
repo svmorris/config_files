@@ -1,7 +1,7 @@
 ### AOC side display
 output HDMI-A-1 \
-    mode 1920x1080@60Hz \
-    position 4300 1010 \
+    mode 2560x1080@60Hz \
+    position 2705 2090 \
     scale 1 \
     transform normal
 
@@ -21,15 +21,15 @@ output DP-2 \
 
 ### LG Ultrawide (left)
 output DP-1 \
-    mode 2560x1080@60Hz \
-    position 2705 2090 \
+    mode 1920x1080@60Hz \
+    position 4300 1010 \
     scale 1 \
     transform normal
 
 
 set $mdown DP-3
-set $mup HDMI-A-1
-set $mleft DP-1
+set $mup DP-1
+set $mleft HDMI-A-1
 set $mright DP-2
 
 workspace 1 output $mdown
@@ -80,19 +80,22 @@ bindsym $mod+Shift+e move container to workspace e
 
 
 
+bindsym --whole-window $alt+button8 exec /home/antone/.config/config_files/scripts/workspaces +
+bindsym --whole-window $alt+button9 exec /home/antone/.config/config_files/scripts/workspaces -
+
 
 ## Pre-launch
-    assign [app_id="org.chromium.Chromium"] 8
-    exec flatpak run org.chromium.Chromium
+    # assign [app_id="org.chromium.Chromium"] 8
+    # exec flatpak run org.chromium.Chromium
 
-    assign [app_id="firefox"] 8
-    exec firefox
+    # assign [app_id="firefox"] 8
+    # exec firefox
 
-    # assign [app_id="com.spotify.Client"] q
+    assign [app_id="com.spotify.Client"] q
     # exec flatpak run com.spotify.Client
 
     assign [app_id="com.discordapp.Discord"] q
-    exec flatpak run com.discordapp.Discord
+    # exec flatpak run com.discordapp.Discord
 
 ### Status Bar
 # Read `man 5 sway-bar` for more information about this section.
