@@ -114,3 +114,8 @@ keymap
 keyscan
 unsets
 ctzll
+hypervisor
+nrf52840
+RTOS
+Authentura
+deinit

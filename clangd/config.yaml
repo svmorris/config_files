@@ -6,6 +6,7 @@ Diagnostics:
   UnusedIncludes: Strict
   MissingIncludes: Strict
   Includes:
+    IgnoreHeader: [errno.h]
     AnalyzeAngledIncludes: false                 # Check unused <> includes [14]
   ClangTidy:
     # ClangTidy is supposed to have some good things
